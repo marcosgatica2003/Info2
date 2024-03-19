@@ -1,0 +1,109 @@
+(Vimos la presentaciòn de la materia - se puede ver en la pàgina de la càtedra)
+- Cualquier ev. se aprueba con 6 (se puede recuperar una vez, se obtiene otra chance si haces una evaluaciòn extra opcional)
+- La ap. directa tiene una ev. final integrador.
+PRUEBA DE DIAGNOSTICO (RESPUESTAS MIAS Y CORRECIONES)
+
+Pregunta 1
+¿A qué se le llama operador en el lenguaje de programación C?
+Un operador en lenguaje C es un carácter/simbolo que permite operar una o màs variables.
+
+Pregunta 2
+Escribir un programa en lenguaje C “Hola mundo”.
+#include <stdio.h>
+
+int main (void) {
+
+    printf("Hola mundo");
+    return 0;
+}
+
+Pregunta 3
+Mencione 3 operadores del lenguaje C (nombre y símbolo).
+Incrementos (++)
+Decrementos (--)
+Lògico AND (&&)
+
+Pregunta 4
+¿Qué es un puntero?
+Es un tipo de variable que puede contener direcciones de memoria, void y null.
+
+Pregunta 5
+Escribir un programa en lenguaje que inicialice un valor entero e imprima en pantalla su dirección en memoria.
+
+#include <stdio.h>
+
+int main (void) {
+    int var = 3;
+    printf(&var);
+    return 0;
+}
+
+Pregunta 6
+¿Qué finalidad tienen los comentarios en un programa C?
+Permiten explicar partes del còdigo. Dichos comentarios son del programador, para otros; no afectan en el còdigo y el preprocesador los elimina en el proceso de compilado.
+
+Pregunta 7
+Escribir un programa en lenguaje C que inicialice una cadena a un valor constante y muestre la cadena en pantalla.
+
+#include <stdio.h>
+
+int main (void) {
+    const char cadena[] = 'Hola profe';
+    printf(cadena);
+    return 0;
+}
+
+Pregunta 8
+¿Qué característica tiene una variable global?
+No estàn contenidas en una funciòn o bloque y tienen alcance de archivo.
+
+Pregunta 9
+¿Qué puede decir acerca de los arreglos y las structs en C?
+Los arreglos son un conjunto de variables del mismo tipo, a diferencia de una estructura que son 'variables' nuevas creadas por el usuario que contienen varios tipos de datos.
+
+Pregunta 10
+¿Cómo se almacenan las cadenas en el lenguaje de programación C?
+Las cadenas se pueden almacenar mediante arreglos char o punteros de este.
+
+Pregunta 11
+Mencione 3 tipos de datos básicos del lenguaje C.
+int
+float
+char
+
+Pregunta 12
+Escriba 5 palabras reservadas del lenguaje de programación C.
+if - typedef - goto - switch - main
+
+Pregunta 13
+Una variable definida dentro del bloque de la funión main() se le dice que es: global o local?
+local
+
+Pregunta 14
+¿Qué puede decir sobre el siguiente código fuente?
+int main(void)
+{
+    int a = 2, b = 3;
+    return (a + b);
+}
+
+
+- Le falta el archivo de cabecera donde contiene la directiva include del preprocesador con el llamado a la biblioteca stdio.h
+- Es una funciòn main, donde adentro tiene inicializado dos variables a y b.
+- La terminal devolverà el valor de la suma entre a y b (5). Se acostumbra a que el return de la funciòn main sea 0, para indicar que todo saliò bien.
+
+Pregunta 15
+¿Cuál es la entrada y la salida estándar comúnmente utilizadas al ejecutar un programa escrito en lenguaje C en una PC?
+void y 0.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Microprocesador y microcontrolador
+
+- Vimos los còdigos bàsicos de C en Info1
+- No siempre tenemos algo como PC, si no placas como la Arduino UNO (entre otras)
+- Si cambiamos el equipo, cambia la biblioteca estàndar. Con ello, cambian las funciones.
+- Lo bàsico aquì son prender los leds usando operadores a nivel de bit y unas bibliotecas màs para darle detalles.
+
+
+
+
