@@ -1,0 +1,19 @@
+Introducción a cómo escribir las variales (usamos camelCase)
+- Así mismo para las funciones (calcularEntero, gradoCelsius, etc.)
+- Repaso de constantes simbolicas (con #define, en mayúscula todo simpre).
+- Los nombres son: consistentes, claros y preferentemente cortos.
+
+
+Comentarios a la función:
+- Podemos hacer una documentación de una función usando (Doxygen)
+- Permite generar documentos en pdf o html y sirve para explicar qué hace una función.
+- Esto sirve demasiado en librerías.
+- La documentación empieza:
+/**
+@
+@
+@
+@
+*/
+
+hay varios parametros que van e los @ (bref - param - verbatim - endverbatim - returns)
