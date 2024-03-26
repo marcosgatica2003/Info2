@@ -1,0 +1,10 @@
+PC
+- Vimos el procesador; todos los datos pasan por este. Hay funciones que dicen què hacer con estos datos.
+- Vimos el ATmega328, tiene diferentes buses de datos para otros propositos Flash, SRAM EEPROM. Hay bloques dentro del procesador ATmega328 para otros propositos.
+
+LINUX
+- Tipos de sistemas operativos
+- Origen de Linux
+- La unix wars
+- 
+
