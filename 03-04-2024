@@ -1,0 +1,92 @@
+ARDUINO
+--------
+1) Vimos las partes del arduino, de forma general
+2) Herramientas de simulaciòn
+  a- Tinkercad circuits, fritzing, simulIDE
+Proteus
+
+3) Codigo de arduino
+  a- funciòn setup (lo que inicia)
+  b- loop (funciòn ciclica, funciona como un reloj)
+  c- hay muchas librerias para arduino que permite tocar varias cosas de la placa
+  d- entradas (interpreta señales recibidas) - Salidas (emite señales desde programa)
+  e- arduino tiene constantes definidas para C (como el INPUT, OUTPUT)
+
+4) Codigo arduino prender dos led con tiempos distintos (ejercicio1 y 2)
+
+
+int tiempoLedUno = 0, tiempoLedDos = 0;
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  digitalWrite(13, HIGH);
+  digitalWrite(12,HIGH); 
+}
+
+void loop()
+{
+  delay(1);
+  tiempoLedUno += 1;
+  tiempoLedDos += 1;
+  
+  
+  if (tiempoLedUno == 1000) {
+    digitalWrite(13, LOW);
+  }
+  
+  if (tiempoLedDos == 1550) {
+    digitalWrite(12, LOW);
+  }
+  
+  if (tiempoLedUno == 3000) {
+    digitalWrite(13, HIGH);
+    tiempoLedUno = 0;
+  }
+  
+  if (tiempoLedDos == 3750) {
+    digitalWrite(12, HIGH);
+    tiempoLedDos = 0;
+  }
+}
+
+-----------------------------------
+ejercicio3:
+
+int tiempoLedUno = 0, tiempoLedDos = 0;
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  digitalWrite(13, HIGH);
+  digitalWrite(12,HIGH); 
+  Serial.begin(15200);
+  Serial.println("Pin 13 prendido");
+}
+
+void loop()
+{
+  delay(1);
+  tiempoLedUno += 1;
+  tiempoLedDos += 1;
+  
+  if (tiempoLedUno == 1000) {
+    digitalWrite(13, LOW);
+ 	Serial.println("Pin 13 apagado");
+  }
+  if (tiempoLedDos == 1550) {
+    digitalWrite(12, LOW);
+  }
+  
+  if (tiempoLedUno == 3000) {
+    digitalWrite(13, HIGH);
+    tiempoLedUno = 0;
+  	Serial.println("Pin 13 prendido");
+  }
+  if (tiempoLedDos == 3750) {
+    digitalWrite(12, HIGH);
+    tiempoLedDos = 0;
+  }
+}
