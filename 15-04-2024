@@ -1,0 +1,14 @@
+Partes de un sistema operativo:
+ -  Hardware
+ - Kernel/Núcleo (comunica con el hard. No tiene vinculación con el usuario, coordina funciones internas y administra procesos del sistema.) (por acá también hay algunos drivers)
+ - Shell
+ - Entornos, aplicaciones
+
+ Cada una depende de la otra siguiente. El sistema operativo tiene procesos y sistemas de archivos, por encima el entorno de escriotio (la parte gráfica).
+  EL kernel se puede compilar para varias arquitecturas.
+
+  Sheel de linux
+  --------------
+
+  
+ 
