@@ -30,5 +30,10 @@ Para esto está una variable de entorno.
 Son variables que están dentro de la shell, hacen que funcionen los demás comandos y podemos agregar otros.
 Podemos ver el valor de la variable de entorno usando "echo $(variable de entorno)"
 
-  
+Sistemas de archivos - Redirreción de entrada y salida - Procesos - Señales
+------------------------------------------------------------------
+
+
+
+
  
