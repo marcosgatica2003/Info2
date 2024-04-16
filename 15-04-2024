@@ -9,6 +9,26 @@ Partes de un sistema operativo:
 
   Sheel de linux
   --------------
+ Sigue la filosofía de Unix, para hacer un código compatible antes que eficiente, sencillo y corto de leer.
+
+
+Prompt
+-----
+Aparece al principio, es una parte que indica que está listo para decibir ordenes.
+
+Usuarios y grupos
+------------------
+Multiusurio: pueden tener muchos usuarios, con distintos permisos.
+Cada usuario pertenece a un grupo, con un identificador (también los grupos).
+Les permite dar permisos a acceso, modificación, ejecuación, etc.
+Superusuario (sudo)
+    Tiene privilegios sobre el sistema (se asigna durante la instalación)
+    Tiene ID 0
+    Tiene una clave de administración, para hacer cosas del sistema.
+¿Dónde se guardan los comandos?
+Para esto está una variable de entorno.
+Son variables que están dentro de la shell, hacen que funcionen los demás comandos y podemos agregar otros.
+Podemos ver el valor de la variable de entorno usando "echo $(variable de entorno)"
 
   
  
