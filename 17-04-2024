@@ -1,0 +1,30 @@
+Vimos Kubuntu con entorno plasma (que gay, aguante Debian con i3)
+Repasamos los comandos que vimos el 15-04-2024
+
+Arbol de archivos (estructuras)
+---------------------
+\ :
+1) \home
+2) \usr
+3) \bin (acá están los programas asociados a los comandos de linux)
+4) \media (para montar cosas)
+(hay muchas más)
+
+por defecto el comando cd te lleva al directorio home del usuario actual. La tecla TAB autocompleta comandos o lista los asociados.
+Todo lo asociado de linux es un archivo. Los nombres son estrictos, digamos, se respetan las mayúsculas.
+
+Atributos de archivos (ls -l)
+----------------------
+descripción del tipo - usuario - atributos - tamaño - fecha de creación - nombre del archivo
+
+Administrador (sudo)
+----------------------
+permite ejecutar comandos de administrador, pidiendo una contraseña. Permite, por ejemplo, descargar paquetes. 
+apt (advance packages tool):
+    search (busca paquetes) {acá el nombre}
+    install {nombre de paquete}
+    update (actualiza los paquetes)
+    upgrade (actualiza el sistema)
+    remove {nombre del paquete} (nombre del paquete)
+    
+    hay que actualizar los paquetes de los repositorios, antes de instalar algo.
