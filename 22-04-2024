@@ -1,0 +1,20 @@
+> Una función que devuelve un valor, a donde fue llamado.
+> echo $?: devuelve el valor de lo que devolvió un programa cuando fue llamado desde la shell.
+> Vimos la Intel Galileo, conectada a una pc con linux por medio de 30 adaptadores de puerto serie a usb. Usamos putty para comunicarnos con la intel galileo.
+
+SISTEMAS DE ARCHIVOS
+--------------------
+
+En linux, todo es un archivo. Hay un directorio raíz (/), es la principal de todo el sistema. Luego hay un sistema tipo árbol donde se desprenden el resto de directorios del sistema, como el home, usr, etc...). 
+Existe el concepto de camino, que es de un archivo a otro. Puede ser absoluto (empezando por la raíz: /home/usuario...) o relativo (partiendo de un archivo a otro: ./Escritorio).
+Con ls -a muestras los archivos ocultos. Agregando '..' a ls o cd, accedemos al directorio o listamos el directorio inmediatamente anterior.
+
+ATRIBUTOS
+----------
+'touch' crea un archivo con lo que le pases.
+'pwd' muestra el directorio actual en forma absoluta.
+'echo "hola mundo" > hola.txt' guarda en el archivo hola.txt lo que le pasaste, el "hola mundo". Si le metes >>, concatenas un texto que le pases al echo.
+Hay varios tipos de archivos en linux (ver tabla en las filminas 4 de introducción a linux).
+Con 'chmod' podemos cambiar los permisos de un archivo, a nivel de propio usuario, grupo y ejecución.
+Se puede cambiar los permisos de un archivo en forma de octal.
+
