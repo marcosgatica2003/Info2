@@ -17,4 +17,3 @@ ATRIBUTOS
 Hay varios tipos de archivos en linux (ver tabla en las filminas 4 de introducción a linux).
 Con 'chmod' podemos cambiar los permisos de un archivo, a nivel de propio usuario, grupo y ejecución.
 Se puede cambiar los permisos de un archivo en forma de octal.
-
