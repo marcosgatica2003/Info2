@@ -4,3 +4,23 @@ Tubería: grep y demás. Permite direccionar salidas a entradas de otras funcion
 SCRIPT
 -------
 
+ 1 #!/bin/bash
+  2 #Creo un variable para hacer la carpeta
+  3 nombreCarpeta="${1:-miProyecto}"
+  4 
+  5 mkdir "$nombreCarpeta" || exit
+  6 
+  7 cd "$nombreCarpeta" || exit
+  8 
+  9 cat>main.c<<EOF
+ 10 #include <stdio.h>
+ 11 
+ 12 int main (void) {
+ 13     printf("Se hizo bien\n");
+ 14     return 0;
+ 15 }
+ 16 EOF
+ 17 
+ 18 echo "Se ha creado la carpeta 'nombreCarpeta'"
+ 19 
+ 20 gvim main.c &
