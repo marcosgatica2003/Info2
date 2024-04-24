@@ -1,0 +1,6 @@
+La función 'top' en la shell muestra los procesos del sistema. 
+Tubería: grep y demás. Permite direccionar salidas a entradas de otras funciones. 
+--------------------------------------------------------------------------------------
+SCRIPT
+-------
+
