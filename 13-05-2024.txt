@@ -1,0 +1,74 @@
+Comando kill "kill -SIG (TERM, KILL O INT) <PID>" Envía una señal a un proceso.
+
+CALIFICADORES VOLATILE Y CONST
+------------------------------
+
+- Calificadores de C: static ; extern ; auto ; register ; volatile ; const
+---------------------
+
+CONST: se le asigna el valor cuando se inicializa y luego no se puede cambiar, el compilador te dará error.
+
+VOLATILE:
+---------
+indica al compilador no optimizar lo relacionado a dichas variables. Utilizado en la mayoría de los casos para el acceso al hardware. Le indica que la variable no se guarde en cache.
+
+Por ejemplo, en un arduino uno (que tiene un ATmega328), para controlar un períferico y leer de este, simplemente lo trabaja desde la memoria sin usar algún valor que maneje el periferico. 
+
+VOLATILE también sirve para el software. Por ejemplo
+    salir = 0;
+    while(!salir) {
+        /bucle corto completamente visible al compilador
+        }
+
+    /Si la variable salir se declara volatile, el compilador se ve obligado a cargarla cada vez, ya que puede modificarse en otro lugar. El compilador determina que el cuerpo del bucle no modifica la variable salir y convierte el bucle en un bucle while(1).
+
+Se pueden definir la siguientes constantes simbólicas:
+    #define DDRB *( (volatile unsigned char *)  0x24)  
+    #define PORTB *( (volatile unsigned char *)  0x25)  
+
+
+    /El controlador ATmega328 tiene 32 registros, 64 registros de E/S y una memoria de 2kB. Nosotros trabajamos con algunos rangos de memoria que continen el acceso a varios puertos y se leen con punteros. Los define definen, de forma desreferenciada, el valor 0x24 o 0x25 que van a punteros volatile unsigned char.
+
+    Entonces, los volatile sirven para trabajar con hardware. Luego trabajamos con estas variables con operadores a nivel de bit.
+
+CONST
+----
+
+permiten que no se modifiquen variables. Al agregar punteros puedo hacer casos del tipo:
+
+    puntero constante a dato constante
+    puntero no constante a dato constante
+    puntero constante a dato no constante
+    puntero no constante a dato no constante
+
+OPERADORES A NIVEL DE BITS
+--------------------------
+
+Para manipular los bits individuales de los tipos de datos básicos (generalmente unsigned).
+
+    AND &
+    OR |
+    XOR ~ (Tilde arriba)
+    Desplazamiento izquierda <<
+    Desplazamiento Derecha >>
+    Complemento '
+
+Se puede entender esto con las tablas de verdad.
+
+Los puertos del arduino manejan 8 bits. Pasemos esto a c:
+
+unsigned char puerto;
+puerto = leerPuerto();
+
+
+/*Modificar el valor de un bit*/
+
+puerto | mask; /Le meto un 1 a un bit usando una máscara
+puerto & mask; /Le meto un 0 a un bit usando una máscara
+puerto ^mask; /Le meto un 1 en aquellos bits que quiero que se inviertan
+
+
+escribirPuerto(puerto);
+
+
+
