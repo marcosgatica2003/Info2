@@ -1,0 +1,53 @@
+Desarrollo del proyecto
+-----------------------
+
+> Hay que hacer un informe tocho, de sencillo desarrollo sobre el proyecto y no de su composición. Describe la situación, el problema y la posible solución. Hay un documento a modo de ejemplo que se puede seguir.
+
+Operadores a nivel de bits
+--------------------------
+
+> Las máscaras nos permiten modificar variables a nivel de bit.
+> Los datos de 8 bits los guardamos usualmente con variables unsigned char.
+> Modificar variables usando los puertos del Arduino se deben hacer accediendo a los puertos.
+
+> Con una variable, aplicando una máscara y usando estos operandos. Podemos cambiar el bit en cuestión. La máscara puede ser un bit, un desplazamiento, algún número de otra base.
+
+OR: pone a 1
+AND: pone a 0
+XOR: invierte
+
+>Usando las notaciones de desplazamiento, queda explicito el cambio de bit que hacemos. Por ejemplo:
+puerto | = (1<<2) [cambio el bit 2]
+puerto | = (1<<0) [cambio el bit 0]
+
+> Ejercicios:
+
+a) 13 & 10
+0000 1101
+0000 1010
+---------
+0010 0101
+
+0x25
+37
+
+[hubo más, pero son fáciles]
+
+num &= ~((1<<2)|(1<<6))
+
+1<<2 
+0000 0100
+
+1<<6
+0100 0000
+---------
+0100 0100
+
+~ 0100 0100
+  1011 1011
+num 
+X⁷X⁶X⁵X⁴X³X²X¹X⁰
+1 0 1 1 1 0 1 1
+----------------
+& X⁶& & & X²& &
+
