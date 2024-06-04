@@ -1,0 +1,60 @@
+ETAPAS DE COMPILADO
+--------------------
+
+1)  Preprocesado:
+    -   Incluye los archivos de cabecera (código fuente).
+    -   Elimina comentarios.
+    -   Atiende directivas de preprocesador (#)
+        > include: pega el contenido del archivo en el lugar donde está el include como prototipos, uniones, etc. etc.
+        > define (no tienen tipo de dato, en otros lenguajes donde la memoria no es un límite, se recomienda usar variables. Para equipos limitados en memoria como los embebidos, es mejor usar constantes simbólicas). EJ: #define IDENTIFICADOR TEXTO_DE_REEMPLAZO
+
+        > Macros: identificador definido dentro de una directiva define. Como las constantes simbolicas, el identificador de la macro se eemplaza en el programa con el texto de reemplazo. Ej: #define MACRO_AREA_CIRCULO(x) ( (PI) * (x) * (x) ). Las X son argumentos que se sustituyen dentro del texto de reemplazo y después se desarrolla la macro. Ej: MACRO_AREA_CIRCULO(5) = ( (3.14) * 4 * 4)). Las macros pueden tener más de un argumento: MACRO(x,y) ( (x<y) ? x:y ) [Esto era un if que define el mayor o menor].
+
+        > Le podemos pasar al gcc algunas directivas (solo define). Como un define "gcc -Wall -DNUM=100 programa.c" Esto le pasa un "define NUM 100". Por defecto está el 1, entonces -DNUM= => 1.
+
+        > ifdef y endif: Estas dos directivas se usan para agregar código si hay una confición (ambas dependen entre sí). EJ:
+
+            #ifdef TEST
+            printf("Sexo\n");
+            #endif
+
+            Si hay una variable simbolica TEST, se agrega ese printf. Si la condición no se cumple, se borra todo. Esto se conoce como compilación condicional. Como un if, también tiene su elseif, el ifndef (caso contrario).
+
+
+    -   Compilación condicional
+    
+2)  Compiladores: traduce a lenguaje máquina
+    
+3)  Ensamblado: no sé
+
+4)  Enlazado: no sé
+
+BIBLIOTECAS
+-----------
+
+-   Aparecen en el enlazado.
+-   Son código máquina.
+-   Una colección de archivos objetos compilados que luego se usan. "libm.a" 
+-   Existen dinámicas y estáticas. "libm.so"
+-   Una biblioteca suelen tener las dos versiones (dinámicas y estáticas de una biblioteca)
+-   EJ: stdio - math - string - stdlib
+-   Biblioteca dinámica: como objetos compartidos, si le paso una biblioteca al codigo, se usa la que le pasé o el primer programa que le pase. Esto solo es válido para sistemas con sistemas operativos.
+
+-   Biblioteca estática: permite la compatibilidad, por ejemplo, una biblioteca hecha para intel y otra para amd. El ide de arduino usa las bibliotecas estáticas.
+
+-Vamos a enlazar de forma estática:
+    >   gcc -static ejemplo.c /usr/lib/x86_64-linux-gnu/libm.a -o sqrt_static [Hicimos la ruta a la biblioteca estática] 
+-   Vamos a enlazar de forma dinámica:
+    >   gcc -Wall -I(direcotorio de búsqueda de librerías) -L(directorio de búsqueda de bibliotecas, opcional) ejemplo.c -lm (m es el nombre de la biblioteca)
+
+-   Con ldd podemos ver los linkeos de nuestro código.
+
+CÓMO CONSTRUIR BIBLIOTECAS
+--------------------------
+
+ar cr libsaludos.a hola.o adios.o [biblioteca estática libsaludos.a que incluye códigos c pasados a objeto con gcc -Wall -c ]
+
+gcc -Wall -c -fpic hola.c [genera biblioteca dinámica independiente de la posición de memoria].
+gcc -shared hola.o adios.o -o libsaludo.so [Crea una biblioteca dinámica].
+
+
