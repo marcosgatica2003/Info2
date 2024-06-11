@@ -4,17 +4,25 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{sectsty}
+\usepackage{hyperref}
+\usepackage{titlesec}
 
 \geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
 
-\sectionfont{\fontsize{11pt}{13pt}\selectfont}
+\sectionfont{\fontsize{11pt}{13pt}\selectfont\bfseries}
+
+\titlespacing{\section}{1pt}{\baselineskip}{\baselineskip}
+
 
 \title{}
 \author{}
 \date{}
 
+\setlength{\topsep}{0pt}
+\renewcommand{\refname}{}
+
 \begin{document}
-	
+
 	\begin{center}
 		\textbf{\fontsize{15pt}{17pt}\selectfont PROTOTIPO DE ALCOHOLÍMETRO APLICADO A VEHÍCULOS}
 		
@@ -22,15 +30,33 @@
 		
 	\end{center}
 	
-		
 	\begin{multicols}{2}
 		
 		\section{MOTIVACIÓN}
+			\begin{quotation}
+				Se entiende por "alcoholemia" a la presencia de alcohol en sangre debido al consumo de bebidas alcohólicas, tales como los vinos, cervezas, etc. [1]. 
+				
+				Consumir alguna bebida con alcohol va disminuyendo gradualmente la capacidad motora y la visión del sujeto, llegando un punto donde el discernimiento se ve afectado y los reflejos, atención y agudeza visual disminuyen. Sumado a esto, la persona puede desarrollar una sensación de exaltación, dar falsa seguridad (como excederse de velocidad al conducir y olvidarse o ignorar protocolos de seguridad como el uso del cinturón) y tener dificultades en su inhibición. [2]
+				
+				La alcoholemia es medible en gramos/litro de sangre. Se puede medir directamente haciendo una extracción de sangre del sujeto o indirectamente por el aire expirado y siguiendo una fórmula (el trabajo propuesto por este documento usará la manera indirecta de esta variable)
+			\end{quotation}
+		
 		
 		\section{DEFINICIÓN DEL PROBLEMA Y SOLUCIÓN PROPUESTA}
 		
 		\section{REFERENCIAS}
-		
+			\begin{thebibliography}{9}
+				
+				\bibitem{leyDeTransito} 
+				''Tránsito y consumo de alcohol, ley N° Ley 24.449'' disponible en: \url{https://www.argentina.gob.ar/justicia/derechofacil/leysimple/transito-y-consumo-de-alcohol#:~:text=%C2%BFQu%C3%A9%20es%20la%20alcoholemia%3F,el%20consumo%20de%20bebidas%20alcoh%C3%B3licas.}
+				
+				\bibitem{efectosConsumoDeAlcohol}
+				''El consumo de alcohol y la seguridad vial'' disponible en: \url{https://www.argentina.gob.ar/seguridadvial/observatoriovialnacional/el-consumo-de-alcohol-y-la-seguridad-vial#:~:text=El%20consumo%20de%20alcohol%20disminuye,falsa%20seguridad%20y%20p%C3%A9rdida%20de}
+				
+				\bibitem{alcolemiaVariable}
+				''El alcohol y su metabolización'' informe 
+				
+			\end{thebibliography}
 		
 	\end{multicols}
 	
