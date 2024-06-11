@@ -1,0 +1,3 @@
+[submodule "repositorioDeInfoII/utnfrc_infoii"]
+	path = repositorioDeInfoII/utnfrc_infoii
+	url = https://github.com/gfpp/utnfrc_infoii
