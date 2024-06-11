@@ -78,3 +78,10 @@ ATmega328:
 > Una computadora y varios sistemas tienen varias interfaces de comunicación que siguen varios estándar.
 > Hay varios cables que sirven para dar señal para que se puede leer el dato, que se pueda escribir, etc.
 > Un ejemplo de transmisión de datos en paralelo puede ser el de una pantalla. Un ejemplo de serie puede ser señales bluetooth.
+
+COMUNICACIÓN ASINCRONA Y SINCRONA
+--------------------------------
+
+Cuando haya datos para enviar, el dispositivo de envío manda una señal para comenzar el trabajo.
+EL dispositivo destino debe tener un método de sincronización para comenzar a leer.
+Cosas como un clock o reloj indican este comportamiento de lectura o escritura. Este clock se usa en señales sincronas. En las asincronas se envía un pulso cuando hay algo para hacer (leer o escribir)
