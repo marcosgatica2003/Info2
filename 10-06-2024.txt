@@ -1,0 +1,80 @@
+CONSTRUCCIÓN DE PROYECTOS CON MAKE (NECESIDAD)
+----------------------------------------------
+
+Dado dos códigos objetos:
+gcc -c main.c
+gcc -c hola.c (incluye un #include "hola.h")
+
+Enlazamos con la biblioteca estándar de C.
+gcc main.o hola.o -o hola.out
+
+En resumen podemos hacer todo con:
+gcc -Wall main.c hola.c -o hola
+
+Haciendo por separado permite modificar un archivo fuente y recompilar solo el archivo modificado. Esto nos permite gestionar los cambios. Pero podemos hacerlo más fácil con make.
+
+CONSTRUCCIÓN CON MAKE
+---------------------
+
+Supongamos que modificamos el main.c, después de que tengamos los objetos. Make nos permite saber qué tenemos que hacer luego de haber modificado main.c, y los hace (en este caso, como solo modificamos el main.c, make hace el objeto de main.c y luego lo enlaza con lo que ya tenemos hecho anteriormente).
+
+Automatiza las partes a construir, cómo y cuando (varias llamadas al compilador)
+Permite al programador solo centrarse en el código.
+Permite optimizar los pasos de "editar-compilar-verificar".
+
+MAKEFILE
+--------
+
+> Esto permite que trabaje el make, contiene reglas que le infican a make qué construir, etc etc.
+
+> Las reglas son: target (lo que sale) - dependencias (archivos necesarios para el target) - comandos a ejecutar para construir.
+
+> Ejemplo de makefile:
+  main.o: main.c [obtener el archivo .o a partir del .c con lo que tengo abajo]
+	gcc -Wall -c main.c
+
+> Por defecto busca en el directorio los archivos GNUmakefile, makefile y luego Makefile. En el caso de que tengamos dos o más, se lo podemos especificar con -f: "make -f makefile2"
+
+> Toma la fecha más reciente como los más recientes a usar.
+
+MAKEFILE - REGLAS IMPLÍCITAS
+----------------------------
+1) Podemos usar variables dentro de makefile
+	CC=gcc
+	CFLAGS=-WALL
+	
+	Entonces en vez de escribir "gcc", escribimos "$(CC)". Por si queremos cambiar de compilador. Hay opciones de compilación por defecto, CC es para gcc, por lo tanto no es necesario explicitar lo que vamos a usar.
+
+2) Por defecto entience C, así que no es muy necesario pasarle las reglas sobre cómo construir. 
+
+3) Make puede recibir los target, por defecto hace la primera. Por ejemplo, además de la construcción del ejecutable. Podemos agregar un target con un nombre y ejecute una cosa específica:
+
+Ejemplo:
+	clean:
+		rm -rf *.o *.out
+
+Entonces si hacemos make clean, limpia el directorio actual, borrando los objetos .o y los ejecutables .out.
+
+4) Existen más variables que hacen referencias a cosas por defecto (como al target actual, etc).
+
+[touch permite cambiarle la fecha de un archivo a la fecha actual del sistema]
+
+5) Se puede comentar con #, dentro del makefile
+
+--------------------------------------------------
+UNIDAD 4: Comunicación serie y estándar
+--------------------------------------------------
+
+ATmega328:
+	E/S digitales
+	VART: transmisión de datos seriales
+	ADC
+	DAC
+	PWM
+	Timer
+
+> La comunicación puede ser paralela(simultanea) o serie(secuencial), usando bits.
+> La transmisión de datos permite comunicar PC-PLC-Embebidos-Instrumentos-Componentes de los mismos
+> Una computadora y varios sistemas tienen varias interfaces de comunicación que siguen varios estándar.
+> Hay varios cables que sirven para dar señal para que se puede leer el dato, que se pueda escribir, etc.
+> Un ejemplo de transmisión de datos en paralelo puede ser el de una pantalla. Un ejemplo de serie puede ser señales bluetooth.
