@@ -6,13 +6,18 @@
 \usepackage{sectsty}
 \usepackage{hyperref}
 \usepackage{titlesec}
+\usepackage{fancyhdr}
 
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+\geometry{top=1.5cm, bottom=1.5cm, left=1.3cm, right=1.3cm}
 
 \sectionfont{\fontsize{11pt}{13pt}\selectfont\bfseries}
 
 \titlespacing{\section}{1pt}{\baselineskip}{\baselineskip}
 
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{Pág. \thepage}
 
 \title{}
 \author{}
@@ -22,41 +27,64 @@
 \renewcommand{\refname}{}
 
 \begin{document}
-
+	
 	\begin{center}
-		\textbf{\fontsize{15pt}{17pt}\selectfont PROTOTIPO DE ALCOHOLÍMETRO APLICADO A VEHÍCULOS}
+		\textbf{\fontsize{15pt}{17pt}\selectfont  SISTEMA DE BLOQUEO DE ENCENDIDO VEHICULAR MEDIANTE ALCOHOLÍMETRO}
 		
-		Nahuel Valentín Pereyra () - Marcos Raúl Gatica (402006) - José Prado ()
+		%PROTOTIPO DE ALCOHOLÍMETRO APLICADO A VEHÍCULOS [titulo descartado]
+		
+		Nahuel Valentín Pereyra (402333) - José Prado (62186) - Marcos Raúl Gatica (402006)
 		
 	\end{center}
 	
 	\begin{multicols}{2}
 		
 		\section{MOTIVACIÓN}
-			\begin{quotation}
-				Se entiende por "alcoholemia" a la presencia de alcohol en sangre debido al consumo de bebidas alcohólicas, tales como los vinos, cervezas, etc. [1]. 
-				
-				Consumir alguna bebida con alcohol va disminuyendo gradualmente la capacidad motora y la visión del sujeto, llegando un punto donde el discernimiento se ve afectado y los reflejos, atención y agudeza visual disminuyen. Sumado a esto, la persona puede desarrollar una sensación de exaltación, dar falsa seguridad (como excederse de velocidad al conducir y olvidarse o ignorar protocolos de seguridad como el uso del cinturón) y tener dificultades en su inhibición. [2]
-				
-				La alcoholemia es medible en gramos/litro de sangre. Se puede medir directamente haciendo una extracción de sangre del sujeto o indirectamente por el aire expirado y siguiendo una fórmula (el trabajo propuesto por este documento usará la manera indirecta de esta variable)
-			\end{quotation}
+		\begin{quotation}
+			Se entiende por "alcoholemia" a la presencia de alcohol en sangre debido al consumo de bebidas alcohólicas, tales como los vinos, cervezas, etc. [1]. 
+			
+			Consumir alguna bebida con alcohol va disminuyendo gradualmente la capacidad motora y la visión del sujeto, llegando un punto donde el discernimiento se ve afectado y los reflejos, atención y agudeza visual disminuyen. Sumado a esto, la persona puede desarrollar una sensación de exaltación, dar falsa seguridad (como excederse de velocidad al conducir y olvidarse o ignorar protocolos de seguridad como el uso del cinturón) y tener dificultades en su inhibición. [2]
+			
+			La alcoholemia es medible en gramos/litro de sangre. Se puede medir directamente haciendo una extracción de sangre del sujeto o indirectamente por el aire expirado y siguiendo una fórmula (el trabajo propuesto por este documento usará la manera indirecta de esta variable) [3]
+			
+			Actualmente en la Argentina rige la Ley 27714 [4] que detalla el protocolo de Alcohol Cero al volante a nivel nacional.
+			
+		\end{quotation}	
 		
-		
-		\section{DEFINICIÓN DEL PROBLEMA Y SOLUCIÓN PROPUESTA}
+		\section{DEFINICIÓN DEL PROBLEMA \newline Y SOLUCIÓN PROPUESTA}
+		\begin{quotation}
+			Los problemas mencionados anteriormente ya justifican los defectos de consumir bebidas alcohólicas al momento de conducir. Agregado a esto, tenemos que sumarle la variable "presencia": un 25\% de las personas habían consumido alcohol en las 6 horas previas de que ocurriera un siniestro [5].  
+			
+			Este informe busca reducir los siniestros causados por el consumo de alcohol, proponiendo un prototipo de sistema que irá instalado en los vehículos cuya función es agregar otro factor para poder encender el motor además de la llave: que el conductor cumpla con la Ley 27714 de Alcohol Cero [4].
+			
+			El equipo usará un Arduino Uno para la gestión del módulo de alcoholímetro y podrá controlar el START de la llave de arranque del vehículo, impidiendo o no que se encienda el motor, dejando únicamente habilitado el uso de los accesorios [6] por si la persona necesita descansar en lo que espera a ser atendido. El A.U. enviará estos datos a una computadora externa para la interpretación y muestra de resultados en una interfaz gráfica. En el caso de haber consumido alcohol, el vehículo no arrancará su motor y el sistema enviará una notificación a un contacto agendado para que acuda a su asistencia.
+			
+			Con esto esperamos que se reduzca el número de personas alcoholizadas al volante, conllevando a una disminución en los siniestros derivados de esta acción (el de beber alcohol).
+		\end{quotation}
 		
 		\section{REFERENCIAS}
-			\begin{thebibliography}{9}
-				
-				\bibitem{leyDeTransito} 
-				''Tránsito y consumo de alcohol, ley N° Ley 24.449'' disponible en: \url{https://www.argentina.gob.ar/justicia/derechofacil/leysimple/transito-y-consumo-de-alcohol#:~:text=%C2%BFQu%C3%A9%20es%20la%20alcoholemia%3F,el%20consumo%20de%20bebidas%20alcoh%C3%B3licas.}
-				
-				\bibitem{efectosConsumoDeAlcohol}
-				''El consumo de alcohol y la seguridad vial'' disponible en: \url{https://www.argentina.gob.ar/seguridadvial/observatoriovialnacional/el-consumo-de-alcohol-y-la-seguridad-vial#:~:text=El%20consumo%20de%20alcohol%20disminuye,falsa%20seguridad%20y%20p%C3%A9rdida%20de}
-				
-				\bibitem{alcolemiaVariable}
-				''El alcohol y su metabolización'' informe 
-				
-			\end{thebibliography}
+		\vspace{-1cm}
+		\begin{thebibliography}{6}
+			\bibitem{leyDeTransito} 
+			''Tránsito y consumo de alcohol, ley N° Ley 24.449'' disponible en: \url{https://www.argentina.gob.ar/justicia/derechofacil/leysimple/transito-y-consumo-de-alcohol#:~:text=%C2%BFQu%C3%A9%20es%20la%20alcoholemia%3F,el%20consumo%20de%20bebidas%20alcoh%C3%B3licas.}			
+			\bibitem{efectosConsumoDeAlcohol}
+			''El consumo de alcohol y la seguridad vial'' disponible en: \url{https://www.argentina.gob.ar/seguridadvial/observatoriovialnacional/el-consumo-de-alcohol-y-la-seguridad-vial#:~:text=El%20consumo%20de%20alcohol%20disminuye,falsa%20seguridad%20y%20p%C3%A9rdida%20de}
+			
+			\bibitem{alcolemiaVariable}
+			''Guía para la medición indirecta de alcoholemia a través del aire espirado'' ''7.1.1 Fundamento de la medición'' G.N.C.F., informe disponible en: \url{https://www.nuevalegislacion.com/files/susc/cdj/conc/guia_r181_15.pdf}
+			
+			\bibitem{ley27714}
+			''Ley 27714: Alcohol Cero al volante'' disponible en: \url{https://www.argentina.gob.ar/salud/consumo-de-alcohol/alcohol-cero-al-conducir}
+			
+			\bibitem{porcentajeConsumoAlcohol}
+			''El consumo de alcohol y la seguridad vial'' ''El consumo de alcohol y su vinculación con la seguridad vial en Argentina'' disponible en: \url{https://www.argentina.gob.ar/seguridadvial/observatoriovialnacional/el-consumo-de-alcohol-y-la-seguridad-vial}
+			
+			\begin{minipage}{\linewidth}
+				\item[\textbf{[6]}]
+				''2.5.3.2 Arrancado del motor de explosión'', ítem disponible en: \url{https://biblus.us.es/bibing/proyectos/abreproy/50027/fichero/PFC%2BIvan%2BRodriguez%2BCarmona%252FMemoria%252F09-Arranque%2BAutom%C3%A1tico.pdf}
+			\end{minipage}		
+			
+		\end{thebibliography}
 		
 	\end{multicols}
 	
