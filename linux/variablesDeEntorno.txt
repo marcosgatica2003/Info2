@@ -1,0 +1,13 @@
+VARIABLE DE ENTORNO: variable que contiene datos específicos del sistema, como directorios de búsqueda, configuración regional, preferencias de usuario, etc.
+
+Alcance: globales (nivel sistema) o locales (nivel usuario)
+
+Algunas variables de entorno:
+	PATH: directorios donde el sistema buscará los ejecutables cuando se escriban en terminal
+	HOME: directorio de inicio del usuario
+	LANG , LC_* : configuración regional e idioma del sistema
+	SHELL: shell predeterminada del usuario (bash)
+	DISPLAY: servidor de visualización X para aplicaciones gráficas.
+	LD_LIBRARY_PATH: directorios donde se buscarán las bibliotecas compartidas durante la ejecución de programas.
+
+Para agregar un directorio al PATH podemos hacer export PATH="$PATH:$(pwd)" (direcotiro actual con pwd, si no podemos agregar en absoluto el directorio a pata luego del dos puntos)

@@ -1,0 +1,27 @@
+total 296
+-rw-r--r-- 1 marcosgatica marcosgatica 297278 jun 20 10:08 03_Linux.pdf
+-rw-r--r-- 1 marcosgatica marcosgatica      0 jun 20 10:41 atributosDeArchivosAqui.txt
+-rw-r--r-- 1 marcosgatica marcosgatica    627 jun 20 10:29 crearCarpeta.sh
+-----------------------------------------------------------------------------------
+(-rw-r--r--) -> tipo de archivo y permisos
+(1) número de enlace rígido o duro
+(marcosgatica) nombre del propietario
+(marcosgatica) nombre del grupo
+(627) peso en bytes
+(jun 20 10:29) fecha y hora de la última modificación
+(crearCarpeta) nombre del archivo
+-----------------------------------------------------------------------------------
+-rw-r--r--
+
+r: lectora
+w: escritura
+x: ejecución
+-: ausencia
+
+izq -> der
+
+permiso para usuarios propietarios
+
+permisos para usuarios que pertenecen al grupo
+
+permisos para el resto de usuarios

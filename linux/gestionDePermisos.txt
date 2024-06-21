@@ -1,0 +1,7 @@
+Podemos usar chmod (cambia permisos) , chown (cambia propietario) y chgrp (cambia grupo)  para cambiar permisos.
+
+formato: chmod [cambios en los permisos] [directorio o archivo]
+
+Los cambios en los permisos se pueden hacer de forma octal (r = 4 w = 2 x = 1), o en simbolica (u = propietario g = miembros del grupo o = otros a = todos).
+
+
