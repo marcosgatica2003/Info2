@@ -1,4 +1,0 @@
-Cuántos elementos va a cargar?: Elemento N°0: Elemento N°1: Elemento N°2: Elemento N°3: Elemento N°4: Carga finalizada. 
-
-La suma de los elementos es: 150
-El promedio de los elementos es: 30.000000

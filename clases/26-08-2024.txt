@@ -1,0 +1,46 @@
+PROGRAMACIÓN DE MICROCONTROLADORES AT-MEGA328 (unidad IV)
+---------------------------------------------
+|
+| - | Introdución a la comunicación - Warm - Interfaz libre de comunicación - Puerto Serie en PC - Softcat(permite simular dos puertos Serie)  |
+|	|
+|	|- Diagrama de bloques del ATM328
+|	|	Comunicación Warm, comunicación con el exterior. Entradas y salidas digitales.
+|	|	
+|	|- Arduino UNO
+|	|	|- Puertos (entradas y salidas digitales) (otra cosa más que no anoté)
+|	|	|- IDE de Arduino
+|	|	|	|- Setup - Loop
+|	|	|		|- Mandar al Arduino UNO. Se usa C y/o C++. 
+|	|	|		|- Serial.begin(9600);
+|	|	|			|- Parece un struct, como C común, aunque esa línea es propia de C++, de "programación orientada a objetos". 
+|	|	|			|  Serial es un objeto y un begin es un método.
+|	|	|			|- Acá metemos también el concepto de clases en C++, y los objetos (una instancia de una clase). 
+|	|	|	 		|  Hay una clase que contiene todo lo relacionado al objeto "serial".
+|	|	|
+|	|	|	
+|	|	|- Memoria
+|	|		|- Sección de aplicación.
+|	|		|- Sección de arranque.
+|	|		|- Secciones de memoria orientada a puertos.
+|	|		|- DDRB: un registro de entrada y salida, lee la dirección de memoria del hardware usando "volatile".
+|	|		|	 hay 64 registros de entrada y salida en el Arduino y otros 32 registros. Permite cargar datos a una dirección de memoria en
+|	|		|	 específico. Hay un "#define" desarollado para permitir el uso del "DDRB". En este caso, es DDR, y B es una dirección
+|	|		|	 de memoria en específico, el 0x24. Existe el B, C y D, que y otros registros de entrada y salida son DDR - PORT - PIN. 
+|	|		|	 En resumen, DDRB |= (1<<5), crea una máscara que tiene un 1 desplazado al bit 5 y se le aplica el OR a la dirección 0x24.
+|	|		|
+|	|		|- Hay como 2048 x 8 bits de memoria RAM.  
+|	|
+|	|- Compilación
+|		|- Programación con Toolchain GCC para AVR (la arquitectura del procesador ATM328) 
+|		|- Se usa un compilador cruzado(gcc-avr) y otras herramientas, conocido como Toolchain: gcc - libc-avr - binutils (hay que buscar estos paquetes)
+|		|- ejemplo: avr-gcc -Os -DF_CPU=1600000000UL -nmcu=atmega328p -c -o blink.o blink.c [compila con compilador cruzado, -Os le dice al compilador que cree 
+|		|            el binario más chico posible, -DF_CPU le da una velocidad en Hz, -nmcu indica el procesador para el código, el resto es gcc común]
+		|- binutils hace otras cositas más para compilar y permite generar un .hex que usará la placa.
+
+
+ENTRADA Y SALIDAS DIGITALES
+---------------------------
+|- Se utilizan tres registros de entrada y salida: DDR - PORT - PIN. Se encuentran mapeados en direcciones de memoria fijas. Hay tres puertos: B - C - D.
+|  Entre los 6 hay direcciones de memoria específicas para cada combinación (por ejemplo DDRB).
+|- 
+

@@ -1,0 +1,53 @@
+PUERTO SERIE EN LA PC
+---------------------
+
+Estándar RS-232 : protocolo de comunicación en serie asíncrono. 
+Esto hace referencia a cualquier comunicación en serie.
+
+El puerto USB es uno de los protocolos de comunicación más usados.
+
+Los dispositivos relacionados en puertos serie se listan en /dev con nombre ttys0 o similar.
+
+Podemos ver los mensajes del kernel (últimos 10) con dmesg | tail
+
+El archivo que permite la comunicación con puerto serie tiene sus permisos, que son usualmente al dialout, nuestro usuario debe pertenecer a este grupo, para no estar cambiando con chmod los permidos, dado que se reinician al desconectar y conectar.
+
+Con stty vemos la configuración de terminal, visto del lado de puerto serie. Vemos que va a 38400 bps (bits por segundo). Como es asincrono, se debe ocupar a ese ancho de transmisión unos bits de start, paridad6 y stop1, datos 8. Con stty -a vemos los detalles de bits de datos ocupados por el protocolo.
+
+Stty diferencia con ' - ' o ' ' si una configuración está activada o no. Con -F, stty espera la dirección en dev de un archivo para ver su configuración relacionada con serie (si es que tiene).
+
+Con stty podemos cambiar también la configuración, por ejemplo stty -F /dev/ttyUSB0 115200, le cambiamos la velocidad al puerto serie del dispositivo con comunicación en serie que está en un usb.
+
+[Durante este momento vemos los distintos ide para controlar la comunicación serie del arduino en Linux].
+
+Enviar caracteres que representen números no suele ser lo más efiente porque estaríamos mandando todo el rango de la variable. Conviene enviar números pero esto es complicado. Para transmitir datos, lo mejor es trabajar con uniones. 
+
+El desarrollo del arduino y sus librerías están hechas pensando en que vamos a trabajar con cadenas. 
+
+Podemos simular dispositivos tty con socat y probar nuestras configuraciones, en vez de tener que tener o dos computadoras o comprar un Arduino. 
+
+La comunicación implica funciones de archivos: abrir - escribir - cerrar. También agregaremos la configuración del puerto serie. Para agregar la configuración del puerto serie al código, usaremos la librería termios.h y las funciones tcgetattr() y tcsetattr().
+Esto trabaja con estructuras.
+
+Programación de microcontrolador ATmega328
+------------------------------------------
+
+> Introducción al aparato arduino.
+
+	Memoria
+	-------
+	
+	Tiene dos, una de programa y otra para datos.
+	
+	Memoria de programa FLASH	
+	-------------------------
+	
+	Memoria flash capaz de almacenar el programa, es de 16K x 16 bits haciendo un total de 32KBytes
+	El contador de programa es de 14 bits.
+
+	Memoria de programa RAM
+	-----------------------
+
+	Se almacenan datos.
+	64 registros de I/O y otros 32 registros
+	Hay otro sector de 2048 x 8 bits que se usa puramente para almacenamiento.

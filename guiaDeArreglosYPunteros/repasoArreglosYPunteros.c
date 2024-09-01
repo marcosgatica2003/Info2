@@ -39,6 +39,10 @@ void mandarASalida (const char* sexo) {
     freopen(sexo, "w", stdout);
 }
 
+void saludarARao (void) {
+    printf("Hola Rao\n");
+}
+
 int main (void) {
 
     mandarASalida("salida.txt");
@@ -46,6 +50,7 @@ int main (void) {
     int* pArreglo = arreglo;
     int elementos = cargarElementosArreglo(pArreglo);
     calcularPromedioElementos(sumaElementosArreglo(pArreglo, elementos), elementos);
+    saludarARao();
     return 0;
 }
 
