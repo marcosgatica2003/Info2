@@ -1,0 +1,21 @@
+Funciones de bajo nivel:
+	- open()
+	- read()
+	- [algunas otras que no llegué a escribir]
+
+int open (dirección del puerto serie, flags, modo[opcional]); //prototipo de la función open
+	modo: son como permisos, pueden ser de escritura, lectura, etc etc.
+	esto devuelve un entero, un descriptor de archivo abierto.
+
+función close: cierra lo que fue abierto por open.
+función write: recibe el descriptor de open, un buf y una cantidad de datos a escribir.
+	ssize_t write(int fd, const void *buf, size_t count);
+		ese const void permite que le pasemos cualquier cosa (float, int, cadenas). La función castea esto y lo manda por serie.
+	size_t es un tipo de dato, un alias. Representa conteos.
+	ssize_t también sirve para conteos, pero también puede devolver numeros negativos cuando da error:
+
+
+función read()
+	ssize_t read(int fd, void* buf, size_t count) 
+	recibe un puntero, el descriptor y el máximo de numero de bytes que intentará leer desde el descriptor de archivo.
+	
