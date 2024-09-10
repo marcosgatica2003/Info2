@@ -1,0 +1,199 @@
+INTRODUCCIÓN A C++
+------------------
+
+> Representa una mejora de las carácteristicas de C.
+> Brinda la posibilidad de aplicar el paradigma "programación orientada a objetos"
+> Los programas se construyen mediantes datos definidos bla bla bla (No copié más)
+
+> Se compila ahora con g++
+	> Hay una serie de parámetros con g++ que podemos aplicar a una tubería y podemos ver la versión más reciente capaz de compilar.
+
+> Programa básico en c++:
+#include<iostream>
+
+int main () { //poner "void" o nada, se interpretan de igual forma -> void
+
+	int entero;
+	std::count <<"Introduzca el primer entero \n";
+	std::cin >> entero1;
+
+	int entero1; // definición
+	std::count << "Introduzca el segundo entero \n;
+	std::cin >> entero1;
+
+	int suma = entero + entero1;
+	std::count << "La suma es " << suma << std::end1int entero;
+	std::count <<"Introduzca el primer entero \n";
+	std::cin >> entero1;
+}
+
+> Al parecer, después del "<<", puede ir un tipo de dato o una variable.
+> count y cin son objetos, entonces, programar en c++ es trabajar con clases.
+> std::count >> variable, parece indicar que es algo similar al scanf.
+> Nuevo tipo de dato: el string. Son cadenas, en C teníamos que usar arreglos de datos.
+> Facilita algunas cosas que en C teníamos que explicitar, se pueden importar las bibliotecas de C, aunque no tiene demasiado sentido.
+
+> C++ usa objetos de biblioteca, C usaba funciones de biblioteca.
+
+> >> y << son operadores de inserción y extración de flujo.
+> C++ puede obviar algunos tipos de datos a usar. 
+> En el código anterior, los operadores de inserción y extración tenían entre medio unos espacios antes de las cadenas de caracteres, esto se conoce como "estacio de nombre" (los ::), indica al compilador que es una función de iostream. El espacio de nombre estándar "std" stá disponible mediante la inclusión del archivo de encabezado.
+
+> Se puede obviar el uso de espacio de nombre con "using", que hace visible un nombre:
+	using namespace::name;
+	Ahora uso name en lugar de std::namespace. Ese namespace es un concepto de espacio en nombre.
+> Podes hacer algo potente como "using namespace std;". Ahora no usas más espacios de nombre. A veces hay algunas normas de trabajo y desarrollo que incluye muchas bibliotecas y estos obviaciones no se pueden hacer, ya que se necesita saber a qué biblioteca pertenece.
+
+CREAR NUEVOS TIPOS DE DATOS
+---------------------------
+
+> Supongamos que quiero guardar la hora actual, crearía un struct para contener la hora, minutos y segundos.
+
+> Otra cosa "más antes", podemos usar arreglos. Incluso podemos usar varios #define y armar un arreglo tipo "horario[hora];
+
+> Supongamos que usamos struct:
+
+typedef struct {
+	int hora;
+	int minuto;
+	int segundo;
+} hora_t;
+
+hora_t h;
+
+> En C++, la etiqueta ya forma parte del tipo, digamos:
+
+struct Nombre {
+	char hola[80];
+	char adios[80];
+}
+
+Nombre saludo;
+
+REFERENCIAS Y PARÁMETROS DE REFERENCIAS
+---------------------------------------
+
+> Anteriormente vimos los pasajes "copia" y "referencia", nombres truchos realmente, todo siempre pasábamos por valor, lo que pasa es que vos podes pasar por variable (que se va a copiar) o la dirección de memoria (que apunta a la misma cosa).
+
+> Veamos esto en C++:
+
+int a = 10;
+int* pa = &a; [Ejemplo en C]
+
+int &refA = a; [Esto es referencia en C++, te ahorras hacer dos líneas.]
+
+> Un parámetro de referencia es un alias, permite crear (no llegué a copiar jaja).
+> Digamos, lo que era "copia y referencia" trucha en C, en C++ deja de ser trucha, ya que realmente se hace referencia y no por valor (como siempre se hacía en C).
+
+Esto nos permite hacer cosas como:
+
+++refA (incrementa a A, que es una variable de referencia y te ahorras hacer copias).
+
+> Las variables de referencia se inicializan siempre a la variable a referenciar y no puede ser cambiada.
+
+TIPO DE DATO BOOL (booleano)
+----------------------------
+
+> Son true y false, con valor 1 y 0 respectivamente.
+> Se inicializan con "bool control = true"
+
+PUNTERO NULO
+------------
+
+> En C++ hay un literal llamado "nullptr" que es equivalente a poner NULL.
+> Usar "NULL" requiere que hagamos un #define NULL ((void*)0)
+
+> Ya que estamos, las bibliotecas cambian en C++, agregando una c adelante y quitando la extensión. Ejemplo: "math.h" -> "cmath"
+
+FUNCIONES INLINE
+----------------
+
+> Es un calificador en la definición antes del tipo de ingreso.
+> Le sugiere al compilador que genera una cpia del código de la función "in situ" a fin de evitar la llamada de función.
+
+Ejemplo:
+#include <iostream>
+inline double cubo (const doble s){return s* s * s;}
+
+int main () {
+	(no llegué a copiar)
+	return 0;
+}
+
+SOBRECARGA DE FUNCIONES
+-----------------------
+
+> C++ permite que se definan funciones con el mismo nombre mientras tengan un conjunto diferente de parámetros.
+> Se utilizan por lo general funciones del mismo nombre, que realizan tareas similares con tipos de datos diferentes, y se diferencian con el pasaje de términos.
+
+PLANTILLAS DE FUNCIONES
+-----------------------
+
+> Las funciones sobrecargadas normalmente se utilizan para realizar operaciones similares que involucran diferente lógica de programas sobre diferentes tipos de datos.
+
+> Si la lógica del programa y las operaciones son idénticas, se puede realizar de manera más compacta mediante "plantilla de funciones":
+
+template < typename T >
+T maximo (T a, Tb , Tc)
+{
+	T max= a;
+
+	if (b > max)
+		max = b;
+
+	if (c > max)
+		max = c;
+
+	return max;
+}
+
+> Esto el compilador genera una función temporal con la plantilla y hace las operaciones, por ejemplo si le pasamos un int, T sería int y devuelve int, si pasamos float, T es float y devuelve float.
+
+ASIGNACIÓN DINÁMICA DE MEMORIA
+------------------------------
+
+> En C usamos malloc y calloc, devuelve un puntero void y recibe. También liberamos la memoria con free(void*). Todo esto posible con stdlib.h
+
+> En C++ hay operadores ya disponible de base para este tipo de cosas. Aquí hay "new" y "delete", son operadores que permiten asignar de forma dinámica la memoria.
+
+Ejemplo en C++:
+
+	ptrNombreTIpo = new nombreTipo;
+> Es más fácil en vez de hacer malloc(sizeof(variable)).
+> Al final hacemos delete ptrNombreTIpo y listo.
+> Para reservar más varialbles, podemos hacer new int [10] (reserva memoria para 10 variables int)
+
+> Podemos ya reservar valores con el método anterior: new int [10] {5, 2, 10..}
+o int [10]() -> pone todo en 0.
+
+
+PROGRAMACIÓN ORIENTADA A OBJETOS
+--------------------------------
+
+> Volvamos al ejemplo con el horario, deberíamos armar funciones para cambiar la hora si estuvieramos en C. por ejemplo con el struct anterior deberíamos armar void establecerHora(Hora &, int, int, int)
+
+> En C++ podemos usar clases. La clase tiene un constructor, que sería una referencia a la clase dentro de la misma clase.
+
+> Ejemplo:
+
+class Hora {
+
+	int hora;
+	int minuto;
+	int segundo;
+
+	//Esto son funciones dentro de la clase.
+	Hora();
+	void imprimir();
+};
+
+int main () {
+
+	Hora h;
+	h.imprimir(); //Llama, por medio de la variable h, a la función imprimir dentro de la clase.
+	return 0;
+}
+
+> Podemos sobrecargar las variables, para permitir operaciones como la comparación. Supongamos que quedamos comparar h1 h2, y si todas los datos son iguales, devuelve true.
+
+> Dentro de la clase hay segmentos de "public" y "private". El que crea un objeto de la clase, solo podrá acceder a lo "public", en "private" podemos declarar variables.
