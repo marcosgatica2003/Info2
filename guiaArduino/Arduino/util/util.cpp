@@ -7,10 +7,9 @@ void digitalToggle (int pin) {
 }
 
 void demoraLED (void) {
-  unsigned int demora = 0;
-  if (Serial.available() > 0) {
-    demora = Serial.parseInt();
+  if (Serial.available()) {
+    unsigned char demora = Serial.parseInt(); 
+    delay(demora);
   }
-  delay(demora);
 }
 

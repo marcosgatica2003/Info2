@@ -5,7 +5,7 @@
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(1200);
   pinMode(13, OUTPUT);
   
  }
@@ -13,7 +13,6 @@ void setup() {
 void loop() {
   digitalToggle(13);
   demoraLED();
-  
 }
 
 /*2. Modificar el ejercicio anterior para establecer el tiempo mediante un valor entero pasado por
