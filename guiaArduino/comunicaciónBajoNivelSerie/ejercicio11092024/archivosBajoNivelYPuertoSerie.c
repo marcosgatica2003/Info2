@@ -9,7 +9,7 @@ int main() {
     int fd; 
     char buffer[256]={'\0'};
     const char *mensaje = "Hola!\n";
-    fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NONBLOCK);
+    fd = open("/dev/tty7", O_RDWR | O_NOCTTY | O_NONBLOCK);
 
     if (fd == -1) {
         perror("Error al abrir el puerto serie");
