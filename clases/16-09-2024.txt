@@ -1,0 +1,113 @@
+- Dentro del paradicma de programación, tenemos que ponernos en lugar del que programó la clase y el que hace el resto del programa (usuario de clase).
+
+CONSTRUCTORES
+-------------
+> Dentro de las clases podemos agregar uno o más constructores, estos constructores son funciones detalladas en otro archivo normalmente.
+
+> Podemos dejar los constructores en la clase, generar los objetos de c++ y luego enlazar todo con los archivos correspondientes.
+
+FUNCIONES MIEMBRO EN LAS CLASES
+-------------------------------
+
+En la clase anterior estaban funciones de imprimir y el constructor, aquí un ejemplo:
+
+Hora::Hora () {
+	hora = minuto = segundo = 0; //Inicia todos los valores en 0.
+}
+
+Hay ejemplos similares para el resto de funciones, como imprimir.
+
+Las interfaces públicas son las funciones dentro de esta categoría. Cambiar las variables para una mejor optimización por ejemplo, deberíamos re-implementar las interfaces. Normalmente al usuario de la clase no le interesa esto, mientras reciba y devualva lo que siempre hizo.
+
+PROGRAMACIÓN ORIENTADA A OBJETOS
+--------------------------------
+
+La POO encapsula datos y funciones (como los ejemplos que vimos).
+
+AL usuario de la clase no concierte acceso a los datos, solo las funciones miembros. Tampoco las implementaciones de funciones. Todo lo anterior se lo conoce como encapsulamiento.
+
+CLASES EN C++
+--------------
+
+> No se pueden inicializar datos en los variables (datos miembros).
+> Se inicializan solo por el constructor o por funciones de interfaz.
+> Alcance de una clase: el usuario solo tiene acceso a la intefaz, no al los datos miembros e implementaciones de funciones.
+
+> Se pueden meter funciones dentro del ámbito "privado", siempre y cuando las interfaces sean las únicas que lo llamen. El usuario no puede ni debe llamar a las funcines de ahí (si es que están).
+
+FUNCIONES MIEMBRO SET y GET
+----------------------------
+Las clases generalemnte brindan funciones miembros public para que los usuarios dela clase puedan estableces y obtener los datos miembros private de la clase.
+
+Son "estandarizaciones" para establecer variables objetos y/o leer datos.
+
+Datito: podemos generar un constructor para meter datos al objeto que se crea con esa clase.
+
+Hora h(1,2,3); // El objeto h, de la clase Hora, se inicializa con esos valores.
+
+Se puede implementar el sobrecargado en el constructor, por ejemplo, un constructor para meter hora, min y seg, otro para hora y min, uno para hora nomás y otro que no reciba nada y meta todo en un valor definido.
+
+CONSTRUCTORES P2:
+-----------------
+
+> Ya conocemos al constructor y que pueden haber varios.
+> Tienen los parámetros con los que se inicializan las clases.
+
+> Incluso pueden ser así:
+
+Hora(int = 0, int = 0, int = 0); //Permiten valores por defecto, y si no se le pasa nada, 0 será el valor por defecto. En el caso anterior, nos ahorramos hacer cuatro constructores.
+
+DESTRUCTORES
+------------
+
+> Función miembro especial, que actúa antes que el objeto desaparezca.
+
+> El destructor se inicializa como un constructor y a la izquierda una "~". No recibe parámetros y no se le pasa nada ni devuelve nada.
+
+> Acá C++ tiene ventajas con respecto a C:
+
+class arreglo {
+	public:
+		arreglo(int = 10); //Si no pasa nada, son 10 elementos.
+	
+	private:
+		unsigned int TAM;
+		int *datos; //puntero al primer elemento de los datos.
+};
+
+//constructor
+arreglo::arreglo(int TAM)
+{
+	*datos = new int (TAM);
+}
+
+arreglo::~arreglo()
+{
+	delete[] datos;
+}
+
+CONSTRUCTOR DE COPIA
+--------------------
+Es un constructor que actua en las asignaciones de un objeto a otro. Por ejemplo:
+
+Hora h1(3,2,1);
+Hora h2;
+
+h2 = h1;
+
+Esto está bien pero no tanto, supongamos brevemente que segundos sea un puntero, estaríamos creando un objeto h2 con un puntero a la misma dirección en los segundos de h1. Deberíamos crear un nuevo objeto que trabaje en estos casos.
+
+Supongamos que hagamos un constructor que recibe un objeto, podríamos hacer "Hora(Hora&);". Como se puede ver, se debe hacer por referencia. Si no es una referencia, el constructor genera una instancia igual al objeto, volvemos al caso del puntero y tendríamos una llamada recursiva.
+
+Otro caso problemático es que si hago un Hora(Hora h), volvería a llamar un constructor de lo que le pase a la clase al inicializar, y podría perder valores que asigné.
+
+REUTILIZACIÓN DE SOFTWARE 
+-------------------------
+
+Al escribir programas orientados a objetos se pone en énfasis en la implementación de las clases adecuadas.
+
+Existen gran variedad de bibliotecas de clases en la comunidad de software libre.
+
+Esto agiliza el desarrollo de software con altas prestaciones y facilita el desarrollo rápido de aplicaciones.
+
+
