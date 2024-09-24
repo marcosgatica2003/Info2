@@ -1,0 +1,189 @@
+CADENAS EN C++
+--------------
+
+> Es una clase que permite almacenar una secuencia de letras u otros caracteres.
+> Permite imprimirse de forma fácil:
+	count << cadena << end1;
+
+> Se necesita la biblioteca "string" para hacer funcionar esto.
+> Función miembro length() devuelve la longitud del string. Es más un método de clase string.
+> Con [] podemos extraer un carácter en cierta posición, también agregar uno:
+	cadena [12] = 'e'
+
+Los corchetes no verifican el tamaño de la cadena.
+> El método string.at(), permite hacer lo mismo con los corchetes (en términos de ver un carácter), pero este verifica la posición que le pasemos, los [] no lo hacen.
+
+> Las cadenas con string están diseñadas para trabajar de forma primitiva (como haciendo asignaciones, comparaciones, etc.). Las operaciones con variables comunes están sobrecargadas para los strings.
+
+class Cadena {
+
+	public: 
+		Cadena(char*);
+		int longitud() {return tamanio;}
+		Cadena operator+ (const Cadena &);
+
+	private:
+		int tamanio;
+		char* cad;
+}
+
+> Supongamos que queramos hacer una clase e implementar la función concatenar, tendríamos que hacer algo como:
+
+cad3 = cad1.concatenar(cad2);
+
+Tenemos que implementar en la clase un método que pueda usar el concatenar, tomarías una cadena ya existente y le agregas una nueva cadena, el resultado es la cadena concatenada que se guardará en cad3.
+
+Si creamos una cadena inicializada con otras cadenas, deberíamos crear otro constructor:
+
+	Cadena cad3(cad1.concatenar(cad2));
+
+Cambiemos el operador '+' para hacer la concatenación más fácil:
+
+cadena operator+ (const cadena&)//(palabra reservada de C++)
+
+si tenemos 'cadena1 + cadena2', esto llama a la función concatenar de la clase. Lo que está a la izquierda, 'cadena1', se le aplica el método concatenar y se le pasa la cadena2 como argumento al método.
+
+BÚSQUEDA EN CADENAS
+-------------------
+
+find() es un método que busca un pedazo de cadena, en una cadena. El valor del retorno es la posición donde está la cadena. Puede recibir el pedazo de cadena a buscar:
+
+	cadena.find("hola");
+
+Esto encuentra el primer 'hola' de una cadena, también podemos ver el siguiente como:
+
+	cadena.find("hola", cadena.finde("hola") + 1)
+
+Esto devuelve el segundo "hola" de una cadena.
+
+CADENA ESTILO C
+---------------
+
+Usaremos fstream.
+
+quiero abrir un archivo que necesita una cadena al estilo C
+fs.open(filename.c_str());
+if(fs.fail()) return -1; //no se pudo abrir el archivo
+fs.close();
+
+
+OBJETOS, FUNCIONES Y DATOS MIEMBROS CONST
+-----------------------------------------
+
+'Bloquea' los cambios de datos que tiene una variable, permitiendo que se inicialicen con un valor y este no se pueda cambiar.
+
+Podemos usar de varias formas const en una clase:
+
+miembros:
+const hora mediodia(12,0,0);
+mediodia.establecer(13,23,15); // esto da error
+
+> Un objeto const no se puede modificar po asignación así que hay que iniciarlizarlo.
+> No se pueden llamar a funciones miembros de un objeto const a menos que la dicha función se declare const.
+> Las funciones miembros const no pueden modificar el obmodificar po asignación así que hay que iniciarlizarlo.
+> No se pueden llamar a funciones miembros de un objeto const a menos que la dicha función se declare const.
+> Las funciones miembros const no pueden modificar el objeto.
+
+int NombreClase::obtieneValor() const {
+	return datoMiembroPrivado;
+}
+
+Programar bien en C++ es agregar const todas las funciones miembros que no tienen que modificar el objeto.
+
+> Dato miembro const:
+
+class contador {
+
+public:
+	incremento(int c = 0, int i = 1);
+	void sumaIncremento() { cuenta += incremento;}
+	void imprime() const;
+
+private:
+	int cuenta;
+	const int incremento; 
+}
+
+constructor:
+
+contador::contador(int n, int i) {
+	cuenta = c;
+	incremento = i;
+}
+
+Esto da error, el incremento es const y le queremos mandar un 'i'. Una forma de arreglar esto es con:
+
+contador::contador(int c, int i): contador(i)
+{
+	cuenta = c;
+}
+
+>'contador(i)' se le asigna a 'incremento' const, el valor de i. Se puede seguir con más variables const: 
+
+contador::contador(int c, int i): contador(i), variableConst1(g)...
+
+> incluso variables no const se puede pasar, el compilador no da error, solo lo hace si hacemos asignaciones a variables const de otra forma:
+
+contador::contador(int c, int i): contador(i), cuenta(c)
+
+>Inventemos algo:
+
+class miClase {
+	public:
+		miClase(string, int, int, int);
+	private:
+		std::string nombre; //clase que adentro tiene objetos de otra clase (composición de clases)
+		hora hora; //objeto de una clase no-standard
+} 
+
+> El constructor debe recibir algo para el nombre y los int de la hora. El constructor es similar a lo que vimos en asignaciones con const:
+
+miClase mc ('nombre', 13, 20, 15)
+
+miClase::miClase(string n,int h, int min, int seg): nombre(n), hora(h,min,seg)
+
+
+PUNTERO THIS
+------------
+
+> Todos los objetos tienen un puntero apuntando a sí mismo llamado this. El puntero no es parte del objeto, esto se aprecia si se utiliza el operador sizeof sobre el objeto.
+> Supongamos que queremos hacer que la clase Hora tenga memoria asignada dinámicamente:
+
+	Hora *ptrH = new Hora(20,40);
+
+> El puntero this solo está en la clase, no en los miembros. Le pasa al objeto como primer argumento implícito de cada función miembro no estática (lo hace el compilador):
+
+h.obtenerMinuto('acá hay un this');
+//this es una palabra reservada que apunta al objeto, como si fuese el "->" de los structs en C.
+
+> Depende del tipo de dato del objeto y de si la función miembro donde se utiliza se declara const.
+> Una función miembro no constate de la clase Hora el puntero this es del tipo Hora * const
+
+> Para qué sirve?
+Sirve para hacer funciones en cascada. 
+
+h.establecer(20,40);
+h.imprimir();
+
+se puede hacer todo de una:
+h.establecer(20,40).imprimir();
+
+h.establecer(...) no devuelve nada, pero queda el this. 
+(* this).imprimir();
+
+Entonces, sería útil que las funciones método devuelvan el puntero this.
+
+Hora &Hora::establecerHora(int h, int m, int s) {
+establecerHora(h);
+establecerMinuto(m);
+establecerSegundo(s);
+return *this;
+}
+
+Esto devuelve una referencia al objeto al que fue llamado.
+
+> Ejemplo con strings:
+
+cadena4 = cadena3 + cadena2 + cadena1;
+
+cadena3 + cadena2 = devuelve un puntero al objeto bla bla bla, que luego se aplica con cadena1 y devuelve una sola cadena a asignar
