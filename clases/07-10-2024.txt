@@ -1,0 +1,69 @@
+COMPOSICIÓN DE CLASES
+---------------------
+
+class punto {
+
+	public:
+
+	punto(float = 0.0, float = 0.0);
+	void imprimir() const;
+	float obtenerX () const; {return --;}
+
+
+	private:
+
+	float x,y;
+
+
+}
+
+class circulo {
+
+	public:
+	circulo(float = 0.0, float = 0.0; float = 1.0);
+	void imprimir () const;
+
+	private:
+	float radio;
+	punto centro; //la clase anterior
+}
+
+¿Cómo implementar el constructor de circulo?
+--------------------------------------------
+
+circulo::circulo(float cX, float cY, float r): centro(cX, cY) { // como las variables const
+	radio = r;
+}
+
+Como vemos, no hay una asignación tipo '=' en la clase punto, entonces no podemos hacer algo como:
+
+centro = ...
+centro(cX, cY); //esto se pierde
+punto centro (cX, cY); //esto vive solo en el constructor
+
+INTRODUCCIÓN A QT (nos saltamos un ratito a unidad 6)
+-----------------------------------------------------
+
+Qt nos permite hacer programas GUI, hasta ahora todo en CLI. Es un framework de desarrollo.
+
+Usaremos Qt-Creator. 
+
+Es un poco más que una biblioteca ya que incluye un preprocesador y un compilador aparte Meta-Creator.
+
+widget: cualquier objeto que se pueda poner en la ventana, incluso la misma ventana es un widget.
+
+HERENCIAS
+---------
+
+Las clases nuevas derivan de otras clases, utilizando sus atributos, comportamiento y agregando nuevas capacidades. 
+
+Una clase derivada puede agregar nuevos datos y miembros, junto a sus base.
+
+Hay un tres tipos de herencias: públicas, privadas y protegidas.
+
+Acceso protected
+----------------
+
+Es un nivel intermedio entre public y private, los miembros se acceden midiante miembros y amigas de la clase base y por medio de miembros y amigas de la clase derivada.
+
+
