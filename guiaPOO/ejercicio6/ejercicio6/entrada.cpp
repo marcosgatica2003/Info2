@@ -6,47 +6,79 @@ d) getFlancoDes: que devuelva si se ha detectado un flanco descendentee)
 Sobrecarga getEstado para que, de manera no bloqueante (con millis), 
 implemente un tiempo antirrebote el cual debe ser pasado por parámetro 
 y tener un valor defecto.*/
-
 #include "entrada.h"
-#include <iostream>
-#include <string>
 #include <Arduino.h>
 
-entrada::entrada(char p, bool d, bool dA): pin(p), dato(d), datoAnterior(dA) {
+entrada::entrada(char p): pin(p) {
   pinMode(pin, INPUT);
+  estado = digitalRead(pin);
 }
 
-unsigned int entrada::getEstado() {
-  estado = digitalRead(pin); return estado;
+void entrada::definirEntrada(char p){
+  pin = p;
+  pinMode(pin, INPUT);
+  estado = digitalRead(pin);
 }
 
-unsigned int entrada::getEstado(unsigned long tA): tiempoAntirrebore(tA) {
+String entrada::getEstado(unsigned long tA) {
+  tiempoAntirrebote = tA;
   unsigned long tiempoActual = millis();
   static unsigned long ultimoTiempo = 0;
+  String estadoReturn = "";
 
   if (tiempoActual - ultimoTiempo >= tiempoAntirrebote){
     estado = digitalRead(pin);
+    //Serial.println(estado);
+
     ultimoTiempo = tiempoActual;
-    return estado;
+    static bool datoAnterior = estado;
+
+    Serial.read();
+    Serial.flush();
+
+    if (estado == 1){
+      estadoReturn = "HIGH";
+    } else if (estado == 0) {
+      estadoReturn = "LOW";
+  } 
+
+  return estadoReturn;
+
   }
-  return datoAnterior;
+
 }
 
-std::string entrada::getFlancoDes() {
-  dato = digitalRead(pin);
-  if (datoAnterior == HIGH && dato = LOW) {
-    datoAnterior = dato; return "Flanco descendente!";
+int entrada::cambioDisponible () {
+  estado = digitalRead(pin);
+  static bool estadoAnterior = LOW;
+
+  if (estado != estadoAnterior){
+    estadoAnterior = estado;
+    return 1;
+  } else {
+    return 0;
   }
-  datoAnterior = dato; return "";
+
 }
 
-std::string entrada::getFlancoAsc(){
-  dato = digitalRead(pin);
-  if (dato == HIGH && datoAnterior == LOW) {
-    datoAnterior = dato; return "Flanco ascendente!";
+String entrada::getFlancoDes() {
+  estado = digitalRead(pin);
+  static bool datoAnterior = HIGH;
+  if (datoAnterior == HIGH && estado == LOW) {
+    datoAnterior = estado; return "Flanco descendente!";
   }
-  datoAnterior = dato; return "";
+  datoAnterior = estado; return "";
 }
+
+String entrada::getFlancoAsc(){
+  estado = digitalRead(pin);
+  static bool datoAnterior = LOW;
+  if (estado == HIGH && datoAnterior == LOW) {
+    datoAnterior = estado; return "Flanco ascendente!";
+  }
+  datoAnterior = estado; return "";
+}
+
 // temperatura::temperatura(float c, std::string m): temp(c), magnitud(m) {}
 
 // void temperatura::convertirKelvin() {

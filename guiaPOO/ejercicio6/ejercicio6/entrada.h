@@ -10,23 +10,21 @@ y tener un valor defecto.*/
 #ifndef ENTRADA_H
 #define ENTRADA_H
 
-#include <iostream>
+#include <Arduino.h>
 
 class entrada {
     public:
-        entrada(char pin = 13, dato = LOW, datoAnterior = LOW);
-        void definirEntrada();
-        unsigned int getEstado();
-        unsigned int getEstado(unsigned long tiempoAntirrebote = 60);
-        std::string getFlancoAsc();
-        std::string getFlancoDes();
+        entrada(char pin = 13);
+        void definirEntrada(char pin);
+        String getEstado(unsigned long tiempoAntirrebote = 1000);
+        String getFlancoAsc();
+        String getFlancoDes();
+        int cambioDisponible();
         
     private:
         char pin;
-        bool dato;
-        bool datoAnterior;
-        unsigned int estado;
-        unsigned long tiempoAntirrebore;
+        int estado;
+        unsigned long tiempoAntirrebote;
 };
 
 
