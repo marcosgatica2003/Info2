@@ -1,9 +1,52 @@
+/*6. Para Arduino, crear una clase Entrada, la misma debe implementar:
+a) Un constructor el cual debe indicarse el pin a utilizar.
+b) getEstado: que devuelva el estado actual de la entrada
+c) getFlancoAsc: que devuelva si se ha detectado un flanco ascendente
+d) getFlancoDes: que devuelva si se ha detectado un flanco descendentee)
+Sobrecarga getEstado para que, de manera no bloqueante (con millis), 
+implemente un tiempo antirrebote el cual debe ser pasado por parámetro 
+y tener un valor defecto.*/
+
 #include "entrada.h"
 #include <iostream>
 #include <string>
 #include <Arduino.h>
 
+entrada::entrada(char p, bool d, bool dA): pin(p), dato(d), datoAnterior(dA) {
+  pinMode(pin, INPUT);
+}
 
+unsigned int entrada::getEstado() {
+  estado = digitalRead(pin); return estado;
+}
+
+unsigned int entrada::getEstado(unsigned long tA): tiempoAntirrebore(tA) {
+  unsigned long tiempoActual = millis();
+  static unsigned long ultimoTiempo = 0;
+
+  if (tiempoActual - ultimoTiempo >= tiempoAntirrebote){
+    estado = digitalRead(pin);
+    ultimoTiempo = tiempoActual;
+    return estado;
+  }
+  return datoAnterior;
+}
+
+std::string entrada::getFlancoDes() {
+  dato = digitalRead(pin);
+  if (datoAnterior == HIGH && dato = LOW) {
+    datoAnterior = dato; return "Flanco descendente!";
+  }
+  datoAnterior = dato; return "";
+}
+
+std::string entrada::getFlancoAsc(){
+  dato = digitalRead(pin);
+  if (dato == HIGH && datoAnterior == LOW) {
+    datoAnterior = dato; return "Flanco ascendente!";
+  }
+  datoAnterior = dato; return "";
+}
 // temperatura::temperatura(float c, std::string m): temp(c), magnitud(m) {}
 
 // void temperatura::convertirKelvin() {
