@@ -1,18 +1,32 @@
-/*6. Para Arduino, crear una clase Entrada, la misma debe implementar:
-a) Un constructor el cual debe indicarse el pin a utilizar.
-b) getEstado: que devuelva el estado actual de la entrada
-c) getFlancoAsc: que devuelva si se ha detectado un flanco ascendente
-d) getFlancoDes: que devuelva si se ha detectado un flanco descendentee)
-Sobrecarga getEstado para que, de manera no bloqueante (con millis), 
-implemente un tiempo antirrebote el cual debe ser pasado por parámetro 
-y tener un valor defecto.*/
+/*Implementar una clase, Tarea, en Arduino para manejar tareas periódicas de manera no
+bloqueante. La clase debe permitir configurar un intervalo de tiempo y verificar si ha pasado
+ese tiempo para ejecutar la tarea.
+a) El constructor debe recibir el período de tiempo.
+b) Debe implementar el método esTiempo(), que devolverá true si se ha cumplido el
+tiempo correspondiente.
+Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
 
-#ifndef ENTRADA_H
-#define ENTRADA_H
+#ifndef TAREA_H
+#define TAREA_H
 
 #include <Arduino.h>
 
-class entrada {
+class tarea {
+  public:
+    tarea(float minutos = 0.0, float segundos = 0.0);
+    bool esTiempo();
+    void definirTiempo(float, float);
+
+  private:
+    float minutos, segundos;
+    float minutosASegundos(minutos);
+}
+
+
+
+
+
+/*class entrada {
     public:
         entrada(char pin = 13);
         void definirEntrada(char pin);
@@ -25,7 +39,7 @@ class entrada {
         char pin;
         int estado;
         unsigned long tiempoAntirrebote;
-};
+};*/
 
 
 

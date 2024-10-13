@@ -1,8 +1,83 @@
+/*6. Para Arduino, crear una clase Entrada, la misma debe implementar:
+a) Un constructor el cual debe indicarse el pin a utilizar.
+b) getEstado: que devuelva el estado actual de la entrada
+c) getFlancoAsc: que devuelva si se ha detectado un flanco ascendente
+d) getFlancoDes: que devuelva si se ha detectado un flanco descendentee)
+Sobrecarga getEstado para que, de manera no bloqueante (con millis), 
+implemente un tiempo antirrebote el cual debe ser pasado por parámetro 
+y tener un valor defecto.*/
 #include "entrada.h"
-#include <iostream>
-#include <string>
 #include <Arduino.h>
 
+entrada::entrada(char p): pin(p) {
+  pinMode(pin, INPUT);
+  estado = digitalRead(pin);
+}
+
+void entrada::definirEntrada(char p){
+  pin = p;
+  pinMode(pin, INPUT);
+  estado = digitalRead(pin);
+}
+
+String entrada::getEstado(unsigned long tA) {
+  tiempoAntirrebote = tA;
+  unsigned long tiempoActual = millis();
+  static unsigned long ultimoTiempo = 0;
+  String estadoReturn = "";
+
+  if (tiempoActual - ultimoTiempo >= tiempoAntirrebote){
+    estado = digitalRead(pin);
+    //Serial.println(estado);
+
+    ultimoTiempo = tiempoActual;
+    static bool datoAnterior = estado;
+
+    Serial.read();
+    Serial.flush();
+
+    if (estado == 1){
+      estadoReturn = "HIGH";
+    } else if (estado == 0) {
+      estadoReturn = "LOW";
+  } 
+
+  return estadoReturn;
+
+  }
+
+}
+
+int entrada::cambioDisponible () {
+  estado = digitalRead(pin);
+  static bool estadoAnterior = LOW;
+
+  if (estado != estadoAnterior){
+    estadoAnterior = estado;
+    return 1;
+  } else {
+    return 0;
+  }
+
+}
+
+String entrada::getFlancoDes() {
+  estado = digitalRead(pin);
+  static bool datoAnterior = HIGH;
+  if (datoAnterior == HIGH && estado == LOW) {
+    datoAnterior = estado; return "Flanco descendente!";
+  }
+  datoAnterior = estado; return "";
+}
+
+String entrada::getFlancoAsc(){
+  estado = digitalRead(pin);
+  static bool datoAnterior = LOW;
+  if (estado == HIGH && datoAnterior == LOW) {
+    datoAnterior = estado; return "Flanco ascendente!";
+  }
+  datoAnterior = estado; return "";
+}
 
 // temperatura::temperatura(float c, std::string m): temp(c), magnitud(m) {}
 

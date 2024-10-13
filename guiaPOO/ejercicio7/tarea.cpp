@@ -1,14 +1,36 @@
-/*6. Para Arduino, crear una clase Entrada, la misma debe implementar:
-a) Un constructor el cual debe indicarse el pin a utilizar.
-b) getEstado: que devuelva el estado actual de la entrada
-c) getFlancoAsc: que devuelva si se ha detectado un flanco ascendente
-d) getFlancoDes: que devuelva si se ha detectado un flanco descendentee)
-Sobrecarga getEstado para que, de manera no bloqueante (con millis), 
-implemente un tiempo antirrebote el cual debe ser pasado por parámetro 
-y tener un valor defecto.*/
-#include "entrada.h"
+/*Implementar una clase, Tarea, en Arduino para manejar tareas periódicas de manera no
+bloqueante. La clase debe permitir configurar un intervalo de tiempo y verificar si ha pasado
+ese tiempo para ejecutar la tarea.
+a) El constructor debe recibir el período de tiempo.
+b) Debe implementar el método esTiempo(), que devolverá true si se ha cumplido el
+tiempo correspondiente.
+Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
+
+#include "tarea.h"
 #include <Arduino.h>
 
+tarea::tarea(float m, float s): minutos(m), segundos(s) {segundos += minutosASegundos(minutos);}
+
+float tarea::minutosASegundos(minutos) {return minutos * 60.0;}
+
+void tarea::definirTiempo(float m, float s) {segundos = s + minutosASegundos(m);}
+
+bool tarea::esTiempo () {
+  unsigned long tiempoInicio = millis();
+  static unsigned long ultimoTiempo = 0;
+  bool estadoReturn = false;
+
+  if ((tiempoInicio - ultimoTiempo) >= segundos) {
+    estadoReturn = true;
+  }
+
+  return estadoReturn;
+}
+
+
+
+
+/*
 entrada::entrada(char p): pin(p) {
   pinMode(pin, INPUT);
   estado = digitalRead(pin);
@@ -78,7 +100,7 @@ String entrada::getFlancoAsc(){
   }
   datoAnterior = estado; return "";
 }
-
+*/
 // temperatura::temperatura(float c, std::string m): temp(c), magnitud(m) {}
 
 // void temperatura::convertirKelvin() {
