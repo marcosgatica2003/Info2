@@ -13,14 +13,14 @@ Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
 
 class tarea {
   public:
-    tarea(float minutos = 0.0, float segundos = 0.0);
+    tarea(int minutos = 0, int segundos = 0);
     bool esTiempo();
-    void definirTiempo(float, float);
+    void definirTiempo(int, int);
 
   private:
-    float minutos, segundos;
-    float minutosASegundos(minutos);
-}
+    int minutos, segundos;
+    unsigned long tiempoMilisegundos, ultimoTiempo;
+};
 
 
 

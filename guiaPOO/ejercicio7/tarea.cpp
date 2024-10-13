@@ -9,22 +9,22 @@ Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
 #include "tarea.h"
 #include <Arduino.h>
 
-tarea::tarea(float m, float s): minutos(m), segundos(s) {segundos += minutosASegundos(minutos);}
+tarea::tarea(int m, int s): tiempoMilisegundos(0), ultimoTiempo(0) {
+  definirTiempo(m, s);
+}
 
-float tarea::minutosASegundos(minutos) {return minutos * 60.0;}
-
-void tarea::definirTiempo(float m, float s) {segundos = s + minutosASegundos(m);}
+void tarea::definirTiempo(int m, int s) {
+  tiempoMilisegundos = (s + m*60) *1000;  
+}
 
 bool tarea::esTiempo () {
-  unsigned long tiempoInicio = millis();
-  static unsigned long ultimoTiempo = 0;
-  bool estadoReturn = false;
+  unsigned long tiempoActual = millis();
 
-  if ((tiempoInicio - ultimoTiempo) >= segundos) {
-    estadoReturn = true;
+  if((tiempoActual - ultimoTiempo) >= tiempoMilisegundos){
+      ultimoTiempo = tiempoActual;
+    return true;
   }
-
-  return estadoReturn;
+  return false;
 }
 
 

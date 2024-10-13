@@ -8,18 +8,26 @@ Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
 
 #include "tarea.h"
 
-tarea LED1(1,0);
-tarea LED2(2,0);
+#define TAM 12
 
+const int pines[TAM] = {2,3,4,5,6,7,8,9,10,11,12};
+tarea LEDs[TAM];
+int incremento = 1;
 void setup() {
-  Serial.begin(9600);
+
+  for (int i = 0; i < TAM; i++){
+    pinMode(pines[i], OUTPUT);
+    digitalWrite(pines[i], LOW);
+    LEDs[i].definirTiempo(0, incremento);
+    incremento++;
+  }
 }
 
 void loop() {
-  
-  if (ent.cambioDisponible()) {
-    Serial.println(ent.getEstado()); 
-    Serial.println(ent.getFlancoAsc());
-    Serial.println(ent.getFlancoDes()); 
+  for (int i = 0; i < TAM; i++){
+    if(LEDs[i].esTiempo()) {
+      digitalWrite(pines[i], !digitalRead(pines[i]));
+    }
   }
+
 }
