@@ -1,0 +1,33 @@
+DIAGRAMA DE CLASES CON UML
+--------------------------
+
+> UML (lenguaje unificado de modelo), diseñado para describir software que está respaldado por el OMG.
+> Se realiza una abstracción y se plasma en una notación gráfica, lo que se conoce como modelado visual.
+> Es un rectángulo con el nombre de la clase, "-" + datos privados y "+" + métodos y datos públicos. "#" para protegidos.
+
+> COMPOSICIÓN DE CLASES: tendríamos dos diagramas, y una flecha de la clase padre que apunta a la clase hijo. 
+
+AMISTAD
+------
+
+> Sirve para sobrecarga de operadores.
+> Son funciones o clases que pueden tener "amigos" de otra clase: una clase que se define fuera de otra clase, y puede compartir datos privados de la otra clase.
+> Supongamos que tenemos claseUNO y claseDOS, dentro de claseUNO tiene que haber friend class claseDOS para cederle los datos.
+> Esto implica que solo la claseDOS tiene acceso a claseUNO, no al revś, ni tampoco las clases que heredan claseDOS.
+
+> Se suele poner al principio de la clase, fuera de los especificadores.
+
+SOBRECARGA DE OPERADORES
+------------------------
+
+> Permite que los operadores del lenguaje permitan hacer operaciones con objetos de clases.
+> La sobrecarga de operadores permite sobrecargar operadores existentes, pero no crear otros operadores.
+
+> Se realiza con funciones cuyo nombre se llama "operator" y el simbolo del operador a sobrecargar.
+
+Funciones miembro, no miembro y amiga:
+······································
+
+y.operator+(y2) // funcion miembro
+
+operador+(y, y2) //no miembro y amiga.
