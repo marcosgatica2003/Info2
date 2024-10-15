@@ -14,9 +14,9 @@ y tener un valor defecto.*/
 
 class entrada {
     public:
-        entrada(char pin = 13);
-        void definirEntrada(char pin);
-        String getEstado(unsigned long tiempoAntirrebote = 1000);
+        entrada(char = 13);
+        void definirEntrada(char);
+        String getEstado(unsigned long = 1000);
         String getFlancoAsc();
         String getFlancoDes();
         int cambioDisponible();

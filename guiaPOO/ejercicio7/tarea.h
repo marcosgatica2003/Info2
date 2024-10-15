@@ -13,7 +13,7 @@ Realizar un ejemplo encendiendo dos Leds con intervalos diferente.*/
 
 class tarea {
   public:
-    tarea(int minutos = 0, int segundos = 0);
+    tarea(int = 0, int = 0);
     bool esTiempo();
     void definirTiempo(int, int);
 

@@ -9,9 +9,8 @@ y tener un valor defecto.*/
 #include "entrada.h"
 #include <Arduino.h>
 
-entrada::entrada(char p): pin(p) {
-  pinMode(pin, INPUT);
-  estado = digitalRead(pin);
+entrada::entrada(char p) {
+    definirEntrada(p);
 }
 
 void entrada::definirEntrada(char p){
