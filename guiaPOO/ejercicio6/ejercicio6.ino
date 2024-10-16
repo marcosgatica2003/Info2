@@ -18,7 +18,7 @@ void setup() {
 void loop() {
   
   if (ent.cambioDisponible()) {
-    Serial.println(ent.getEstado()); 
+    Serial.println(ent.getEstado(500)); 
     Serial.println(ent.getFlancoAsc());
     Serial.println(ent.getFlancoDes()); 
   }
