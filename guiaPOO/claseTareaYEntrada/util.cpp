@@ -41,9 +41,6 @@ String entrada::getEstado(unsigned long tA) {
     ultimoTiempo = tiempoActual;
     static bool datoAnterior = estado;
 
-    Serial.read();
-    Serial.flush();
-
     if (estado == 1){
       estadoReturn = "HIGH";
     } else if (estado == 0) {

@@ -17,7 +17,7 @@ void setup() {
   Serial.begin(BAUDIOS);
 
   for (int i = 0; i < TAM; ++i) {
-    unsigned int j = 1;
+    static unsigned int j = 1;
 
     pinMode(pinesLed[i], OUTPUT);
     digitalWrite(pinesLed[i], LOW);

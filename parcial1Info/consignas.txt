@@ -1,0 +1,40 @@
+Crear un programa que permita encriptar un texto ingresado por teclado. Para ello debe implementar una función que reciba por parámetro dicho texto y lo sobrescriba con el dato correspondiente.
+La técnica para encriptar debe ser la siguiente:
+
+> A cada carácter, de 8 bits, se le intercambiará los 4 bits menos significativos por los 4 bits más significativos
+
+> Al dato resultante se cambiará los estados de cada bits, ceros por unos y unos por ceros.
+
+Consideraciones:
+1. Al retornar de la función se debe imprimir el texto encriptado, es decir, en el "main".
+2. Se trabajará con una cadena de caracteres de no más de 100 elementos.
+3. Emplear aritmética de punteros.
+
+-----------------------------------------------------------------------------------
+
+1) Resolver los siguientes ejercicios sobre operadores a nivel de bits considerando que todos los operandos y variables son de 8-bits (el bit menos significativo se designa como b0 y el más significativo como b7).
+
+
+a) Realice las operaciones que se indican a continuación expresando el resultado en notación decimal, binaria y hexadecimal (los datos para operar están expresados en notación decimal).
+		a. 33 | 86
+
+    b. 85 & 147
+
+(responder solo con el resultado final, entregar la hoja con los cálculos al profesor)
+
+b) Indicar cuáles son los bits que se modifican y qué valores toman al aplicar las siguientes sentencias en lenguaje C (num se define como variable unsigned char). Incluir demostración.
+   a) num &= ~(1 << 4);
+
+  b)  num ^= (1 << 3);
+
+-----------------------------------------------------------------------------------
+2) Responda a las siguientes preguntas relacionadas a las etapas de construcción de un programa:
+
+    ¿Cuáles son las etapas de construcción de un programa que se llevan a cabo al ejecutar las siguientes líneas de comandos? ¿Qué información contiene el archivo de salida?
+        gcc -S main.c
+        gcc -c main.c
+
+    Es sabido que al utilizar una función de la biblioteca matemática, como por ejemplo sqrt(), la construcción del programa se debe realizar con la opción -lm, tal como:
+    gcc calculo.c -lm
+
+    ¿A qué etapa de construcción le corresponde dicha opción?
