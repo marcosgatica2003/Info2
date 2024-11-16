@@ -9,7 +9,7 @@ int main() {
     int fd; 
     char buffer[256]={'\0'};
     const char *mensaje = "Hola!\n";
-    fd = open("/dev/tty7", O_RDWR | O_NOCTTY | O_NONBLOCK);
+    fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NONBLOCK);
 
     if (fd == -1) {
         perror("Error al abrir el puerto serie");
@@ -37,8 +37,7 @@ int main() {
         return 1;
    }
     buffer[bytes_leidos] = '\0'; 
-    //printf("Datos recibidos: %s\n", buffer); 
-    printf("El que usa 1200 baudios es gay\n");
+    printf("Datos recibidos: %s\n", buffer); 
     close(fd); 
     return 0;
 }
