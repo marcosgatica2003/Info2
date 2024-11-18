@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.12.0" xml:lang="es">
+  <compound refid="classalimento" kind="class"><name>alimento</name>
+    <member refid="classalimento_1a879b2a6a3723df35a0ddcc61dc4e7f74" kind="variable"><name>_caducidad</name></member>
+    <member refid="classalimento_1abc7f199047a7f8f7b2b9268ec9bcab2f" kind="variable"><name>_alimento</name></member>
+    <member refid="classalimento_1ab671a0a28360f4888f139f7b64855eed" kind="function"><name>alimento</name></member>
+    <member refid="classalimento_1a2004178194700f11cd859c3726bd09c2" kind="function"><name>mostrarAlimento</name></member>
+  </compound>
+  <compound refid="classelectro" kind="class"><name>electro</name>
+    <member refid="classelectro_1adb21603dd9984a65676eadcfee6fef1a" kind="variable"><name>_voltaje</name></member>
+    <member refid="classelectro_1a2691187f5faa897b2d261c23d73e3546" kind="variable"><name>_electro</name></member>
+    <member refid="classelectro_1abb8be64a552dc6d871cb6cd1bc6930d3" kind="function"><name>electro</name></member>
+    <member refid="classelectro_1aa987f9c8ee25989174d6b10eed1112a8" kind="function"><name>mostrarElectro</name></member>
+  </compound>
+  <compound refid="classfecha" kind="class"><name>fecha</name>
+    <member refid="classfecha_1ad465f19cfd3520bba28131d77a3b4fac" kind="variable"><name>_dia</name></member>
+    <member refid="classfecha_1abfe3646d5571cedc3cd1d0679d3deb4e" kind="variable"><name>_mes</name></member>
+    <member refid="classfecha_1abcbff03fa1b24e0d0163a477cfdf3536" kind="variable"><name>_anio</name></member>
+    <member refid="classfecha_1ac1d38233ea8d96eee1204bce1da2ed57" kind="function"><name>fecha</name></member>
+    <member refid="classfecha_1abb6ab08be74a87a41b3090a6ecadab4c" kind="function"><name>mostrarFecha</name></member>
+  </compound>
+  <compound refid="classproducto" kind="class"><name>producto</name>
+    <member refid="classproducto_1a4ce5011ea8415c12fa12c598442f5440" kind="variable"><name>_nombre</name></member>
+    <member refid="classproducto_1ab67b2e4378f89d2a150b28413d741499" kind="variable"><name>_precio</name></member>
+    <member refid="classproducto_1a22c699919a444063edee73ec172f6e2b" kind="function"><name>producto</name></member>
+    <member refid="classproducto_1a96cf31bb55f13dc1f29aa6a068dc25cd" kind="function"><name>mostrarProducto</name></member>
+  </compound>
+  <compound refid="alimento_8h" kind="file"><name>alimento.h</name>
+  </compound>
+  <compound refid="electro_8h" kind="file"><name>electro.h</name>
+  </compound>
+  <compound refid="fecha_8h" kind="file"><name>fecha.h</name>
+  </compound>
+  <compound refid="producto_8h" kind="file"><name>producto.h</name>
+  </compound>
+</doxygenindex>

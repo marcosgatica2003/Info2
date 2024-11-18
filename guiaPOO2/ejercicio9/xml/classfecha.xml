@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="es">
+  <compounddef id="classfecha" kind="class" language="C++" prot="public">
+    <compoundname>fecha</compoundname>
+    <includes refid="fecha_8h" local="no">fecha.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classfecha_1ad465f19cfd3520bba28131d77a3b4fac" prot="private" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int fecha::_dia</definition>
+        <argsstring></argsstring>
+        <name>_dia</name>
+        <qualifiedname>fecha::_dia</qualifiedname>
+        <briefdescription>
+<para>Atributo unsigned int constante que almacena el día. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="fecha.h" line="33" column="28" bodyfile="fecha.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classfecha_1abfe3646d5571cedc3cd1d0679d3deb4e" prot="private" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int fecha::_mes</definition>
+        <argsstring></argsstring>
+        <name>_mes</name>
+        <qualifiedname>fecha::_mes</qualifiedname>
+        <briefdescription>
+<para>Atributo unsigned int constante que almacena el mes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="fecha.h" line="34" column="28" bodyfile="fecha.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classfecha_1abcbff03fa1b24e0d0163a477cfdf3536" prot="private" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int fecha::_anio</definition>
+        <argsstring></argsstring>
+        <name>_anio</name>
+        <qualifiedname>fecha::_anio</qualifiedname>
+        <briefdescription>
+<para>Atributo unsigned int constante que almacena el año. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="fecha.h" line="35" column="28" bodyfile="fecha.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classfecha_1ac1d38233ea8d96eee1204bce1da2ed57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fecha::fecha</definition>
+        <argsstring>(unsigned int dia, unsigned int mes, unsigned int anio)</argsstring>
+        <name>fecha</name>
+        <qualifiedname>fecha::fecha</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>dia</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mes</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>anio</declname>
+        </param>
+        <briefdescription>
+<para>Constructor de la clase fecha. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unsigned</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>int dia: toma el día. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>unsigned</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>int mes: toma el mes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>unsigned</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>int anio: toma el año. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="fecha.h" line="22" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classfecha_1abb6ab08be74a87a41b3090a6ecadab4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fecha::mostrarFecha</definition>
+        <argsstring>() const</argsstring>
+        <name>mostrarFecha</name>
+        <qualifiedname>fecha::mostrarFecha</qualifiedname>
+        <briefdescription>
+<para>void <ref refid="classfecha_1abb6ab08be74a87a41b3090a6ecadab4c" kindref="member">mostrarFecha() const</ref> Función constante que muestra la fecha en salida estándar. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="fecha.h" line="29" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Clase para almacenar fechas ingresadas por el usuario. Almacena el día, mes y año. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>fecha</label>
+        <link refid="classfecha"/>
+      </node>
+    </collaborationgraph>
+    <location file="fecha.h" line="12" column="1" bodyfile="fecha.h" bodystart="12" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classfecha_1abcbff03fa1b24e0d0163a477cfdf3536" prot="private" virt="non-virtual"><scope>fecha</scope><name>_anio</name></member>
+      <member refid="classfecha_1ad465f19cfd3520bba28131d77a3b4fac" prot="private" virt="non-virtual"><scope>fecha</scope><name>_dia</name></member>
+      <member refid="classfecha_1abfe3646d5571cedc3cd1d0679d3deb4e" prot="private" virt="non-virtual"><scope>fecha</scope><name>_mes</name></member>
+      <member refid="classfecha_1ac1d38233ea8d96eee1204bce1da2ed57" prot="public" virt="non-virtual"><scope>fecha</scope><name>fecha</name></member>
+      <member refid="classfecha_1abb6ab08be74a87a41b3090a6ecadab4c" prot="public" virt="non-virtual"><scope>fecha</scope><name>mostrarFecha</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
